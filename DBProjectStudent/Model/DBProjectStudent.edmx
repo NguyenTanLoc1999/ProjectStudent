@@ -1,0 +1,236 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DBProjectStudentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Lecture">
+          <Key>
+            <PropertyRef Name="L_ID" />
+          </Key>
+          <Property Name="L_ID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="L_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="L_fullname" Type="nvarchar" MaxLength="50" />
+          <Property Name="L_department" Type="nvarchar" MaxLength="50" />
+          <Property Name="L_gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="L_birthday" Type="datetime" />
+          <Property Name="L_phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="L_email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="P_ID" />
+          </Key>
+          <Property Name="P_ID" Type="int" Nullable="false" />
+          <Property Name="P_title" Type="nvarchar" MaxLength="100" />
+          <Property Name="P_description" Type="nvarchar" MaxLength="200" />
+          <Property Name="P_fromtime" Type="datetime" />
+          <Property Name="P_totime" Type="datetime" />
+          <Property Name="S_ID" Type="nvarchar" MaxLength="20" />
+          <Property Name="L_ID" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="S_ID" />
+          </Key>
+          <Property Name="S_ID" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="S_name" Type="nvarchar" MaxLength="100" />
+          <Property Name="S_fullname" Type="nvarchar" MaxLength="50" />
+          <Property Name="S_major" Type="nvarchar" MaxLength="50" />
+          <Property Name="S_gender" Type="nvarchar" MaxLength="50" />
+          <Property Name="S_birthday" Type="datetime" />
+          <Property Name="S_phone" Type="nvarchar" MaxLength="50" />
+          <Property Name="S_email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__Project__L_ID__4E88ABD4">
+          <End Role="Lecture" Type="Self.Lecture" Multiplicity="0..1" />
+          <End Role="Project" Type="Self.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lecture">
+              <PropertyRef Name="L_ID" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="L_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Project__S_ID__4D94879B">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Project" Type="Self.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="S_ID" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="S_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBProjectStudentModelStoreContainer">
+          <EntitySet Name="Lecture" EntityType="Self.Lecture" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Project__L_ID__4E88ABD4" Association="Self.FK__Project__L_ID__4E88ABD4">
+            <End Role="Lecture" EntitySet="Lecture" />
+            <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Project__S_ID__4D94879B" Association="Self.FK__Project__S_ID__4D94879B">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBProjectStudentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Lecture">
+          <Key>
+            <PropertyRef Name="L_ID" />
+          </Key>
+          <Property Name="L_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="L_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="L_fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="L_department" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="L_birthday" Type="DateTime" Precision="3" />
+          <Property Name="L_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="L_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK__Project__L_ID__3B75D760" FromRole="Lecture" ToRole="Project" />
+          <Property Name="L_gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="P_ID" />
+          </Key>
+          <Property Name="P_ID" Type="Int32" Nullable="false" />
+          <Property Name="P_title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="P_description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="P_fromtime" Type="DateTime" Precision="3" />
+          <Property Name="P_totime" Type="DateTime" Precision="3" />
+          <Property Name="S_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="L_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Lecture" Relationship="Self.FK__Project__L_ID__3B75D760" FromRole="Project" ToRole="Lecture" />
+          <NavigationProperty Name="Student" Relationship="Self.FK__Project__S_ID__3A81B327" FromRole="Project" ToRole="Student" />
+        </EntityType>
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="S_ID" />
+          </Key>
+          <Property Name="S_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="S_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="S_fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="S_major" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="S_birthday" Type="DateTime" Precision="3" />
+          <Property Name="S_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="S_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK__Project__S_ID__3A81B327" FromRole="Student" ToRole="Project" />
+          <Property Name="S_gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK__Project__L_ID__3B75D760">
+          <End Role="Lecture" Type="Self.Lecture" Multiplicity="0..1" />
+          <End Role="Project" Type="Self.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lecture">
+              <PropertyRef Name="L_ID" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="L_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Project__S_ID__3A81B327">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="Project" Type="Self.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="S_ID" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="S_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBProjectStudentEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Lectures" EntityType="Self.Lecture" />
+          <EntitySet Name="Projects" EntityType="Self.Project" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <AssociationSet Name="FK__Project__L_ID__3B75D760" Association="Self.FK__Project__L_ID__3B75D760">
+            <End Role="Lecture" EntitySet="Lectures" />
+            <End Role="Project" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Project__S_ID__3A81B327" Association="Self.FK__Project__S_ID__3A81B327">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="Project" EntitySet="Projects" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBProjectStudentModelStoreContainer" CdmEntityContainer="DBProjectStudentEntities">
+          <EntitySetMapping Name="Lectures">
+            <EntityTypeMapping TypeName="DBProjectStudentModel.Lecture">
+              <MappingFragment StoreEntitySet="Lecture">
+                <ScalarProperty Name="L_gender" ColumnName="L_gender" />
+                <ScalarProperty Name="L_ID" ColumnName="L_ID" />
+                <ScalarProperty Name="L_name" ColumnName="L_name" />
+                <ScalarProperty Name="L_fullname" ColumnName="L_fullname" />
+                <ScalarProperty Name="L_department" ColumnName="L_department" />
+                <ScalarProperty Name="L_birthday" ColumnName="L_birthday" />
+                <ScalarProperty Name="L_phone" ColumnName="L_phone" />
+                <ScalarProperty Name="L_email" ColumnName="L_email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projects">
+            <EntityTypeMapping TypeName="DBProjectStudentModel.Project">
+              <MappingFragment StoreEntitySet="Project">
+                <ScalarProperty Name="P_ID" ColumnName="P_ID" />
+                <ScalarProperty Name="P_title" ColumnName="P_title" />
+                <ScalarProperty Name="P_description" ColumnName="P_description" />
+                <ScalarProperty Name="P_fromtime" ColumnName="P_fromtime" />
+                <ScalarProperty Name="P_totime" ColumnName="P_totime" />
+                <ScalarProperty Name="S_ID" ColumnName="S_ID" />
+                <ScalarProperty Name="L_ID" ColumnName="L_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Students">
+            <EntityTypeMapping TypeName="DBProjectStudentModel.Student">
+              <MappingFragment StoreEntitySet="Student">
+                <ScalarProperty Name="S_gender" ColumnName="S_gender" />
+                <ScalarProperty Name="S_ID" ColumnName="S_ID" />
+                <ScalarProperty Name="S_name" ColumnName="S_name" />
+                <ScalarProperty Name="S_fullname" ColumnName="S_fullname" />
+                <ScalarProperty Name="S_major" ColumnName="S_major" />
+                <ScalarProperty Name="S_birthday" ColumnName="S_birthday" />
+                <ScalarProperty Name="S_phone" ColumnName="S_phone" />
+                <ScalarProperty Name="S_email" ColumnName="S_email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

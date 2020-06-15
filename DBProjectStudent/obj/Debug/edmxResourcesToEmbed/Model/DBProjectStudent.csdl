@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBProjectStudentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Lecture">
+    <Key>
+      <PropertyRef Name="L_ID" />
+    </Key>
+    <Property Name="L_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="L_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="L_fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="L_department" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="L_birthday" Type="DateTime" Precision="3" />
+    <Property Name="L_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="L_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Projects" Relationship="Self.FK__Project__L_ID__3B75D760" FromRole="Lecture" ToRole="Project" />
+    <Property Name="L_gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="P_ID" />
+    </Key>
+    <Property Name="P_ID" Type="Int32" Nullable="false" />
+    <Property Name="P_title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="P_description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="P_fromtime" Type="DateTime" Precision="3" />
+    <Property Name="P_totime" Type="DateTime" Precision="3" />
+    <Property Name="S_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="L_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Lecture" Relationship="Self.FK__Project__L_ID__3B75D760" FromRole="Project" ToRole="Lecture" />
+    <NavigationProperty Name="Student" Relationship="Self.FK__Project__S_ID__3A81B327" FromRole="Project" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="S_ID" />
+    </Key>
+    <Property Name="S_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="S_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="S_fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="S_major" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="S_birthday" Type="DateTime" Precision="3" />
+    <Property Name="S_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="S_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Projects" Relationship="Self.FK__Project__S_ID__3A81B327" FromRole="Student" ToRole="Project" />
+    <Property Name="S_gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK__Project__L_ID__3B75D760">
+    <End Role="Lecture" Type="Self.Lecture" Multiplicity="0..1" />
+    <End Role="Project" Type="Self.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lecture">
+        <PropertyRef Name="L_ID" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="L_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Project__S_ID__3A81B327">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="Project" Type="Self.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="S_ID" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="S_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBProjectStudentEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Lectures" EntityType="Self.Lecture" />
+    <EntitySet Name="Projects" EntityType="Self.Project" />
+    <EntitySet Name="Students" EntityType="Self.Student" />
+    <AssociationSet Name="FK__Project__L_ID__3B75D760" Association="Self.FK__Project__L_ID__3B75D760">
+      <End Role="Lecture" EntitySet="Lectures" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Project__S_ID__3A81B327" Association="Self.FK__Project__S_ID__3A81B327">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

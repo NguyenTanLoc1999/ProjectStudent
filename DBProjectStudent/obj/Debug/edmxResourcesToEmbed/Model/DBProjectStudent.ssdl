@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBProjectStudentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Lecture">
+    <Key>
+      <PropertyRef Name="L_ID" />
+    </Key>
+    <Property Name="L_ID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="L_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="L_fullname" Type="nvarchar" MaxLength="50" />
+    <Property Name="L_department" Type="nvarchar" MaxLength="50" />
+    <Property Name="L_gender" Type="nvarchar" MaxLength="50" />
+    <Property Name="L_birthday" Type="datetime" />
+    <Property Name="L_phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="L_email" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="P_ID" />
+    </Key>
+    <Property Name="P_ID" Type="int" Nullable="false" />
+    <Property Name="P_title" Type="nvarchar" MaxLength="100" />
+    <Property Name="P_description" Type="nvarchar" MaxLength="200" />
+    <Property Name="P_fromtime" Type="datetime" />
+    <Property Name="P_totime" Type="datetime" />
+    <Property Name="S_ID" Type="nvarchar" MaxLength="20" />
+    <Property Name="L_ID" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="S_ID" />
+    </Key>
+    <Property Name="S_ID" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="S_name" Type="nvarchar" MaxLength="100" />
+    <Property Name="S_fullname" Type="nvarchar" MaxLength="50" />
+    <Property Name="S_major" Type="nvarchar" MaxLength="50" />
+    <Property Name="S_gender" Type="nvarchar" MaxLength="50" />
+    <Property Name="S_birthday" Type="datetime" />
+    <Property Name="S_phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="S_email" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__Project__L_ID__4E88ABD4">
+    <End Role="Lecture" Type="Self.Lecture" Multiplicity="0..1" />
+    <End Role="Project" Type="Self.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lecture">
+        <PropertyRef Name="L_ID" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="L_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Project__S_ID__4D94879B">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="Project" Type="Self.Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="S_ID" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="S_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBProjectStudentModelStoreContainer">
+    <EntitySet Name="Lecture" EntityType="Self.Lecture" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Project__L_ID__4E88ABD4" Association="Self.FK__Project__L_ID__4E88ABD4">
+      <End Role="Lecture" EntitySet="Lecture" />
+      <End Role="Project" EntitySet="Project" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Project__S_ID__4D94879B" Association="Self.FK__Project__S_ID__4D94879B">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Project" EntitySet="Project" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
