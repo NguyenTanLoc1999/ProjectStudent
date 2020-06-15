@@ -41,6 +41,7 @@ namespace ProjectStudent.Controller
                                 P_description = t.P_description,
                                 P_fromtime = t.P_fromtime,
                                 P_totime = t.P_totime,
+                                S_ID = t.S_ID,
                                 Student = t.Student
 
 
@@ -51,6 +52,7 @@ namespace ProjectStudent.Controller
                                 P_description = x.P_description,
                                 P_fromtime = x.P_fromtime,
                                 P_totime = x.P_totime,
+                                S_ID = x.S_ID,
                                 Student = x.Student
 
                             });
@@ -61,9 +63,16 @@ namespace ProjectStudent.Controller
         {
             using (var _context = new DBProjectStudentEntities())
             {
-                _context.Projects.Add(project);
-                _context.SaveChanges();
-                return true;
+                try
+                {
+                    _context.Projects.Add(project);
+                    _context.SaveChanges();
+                    return true;
+                }
+                catch (Exception _)
+                {
+                    return false;
+                }
             }
         }
     }
