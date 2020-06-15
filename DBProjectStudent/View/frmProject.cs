@@ -164,7 +164,6 @@ namespace DBProjectStudent.View
 
         private void listLectureSearch_DoubleClick(object sender, EventArgs e)
         {
-            //test DemoBranch
             Lecture lecture = (Lecture)this.listLectureSearch.SelectedItem;
             // check repeat user
             for (int i = 0; i < this.listLecture.Items.Count; i++)
