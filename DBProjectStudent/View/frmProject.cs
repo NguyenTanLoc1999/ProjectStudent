@@ -24,13 +24,14 @@ namespace DBProjectStudent.View
             this.cDescription.DataPropertyName = nameof(Project.P_description);
             this.cFromtime.DataPropertyName = nameof(Project.P_fromtime);
             this.cTotime.DataPropertyName = nameof(Project.P_totime);
-            this.cStudent.DataPropertyName = nameof(Project.Student);
-
+            //this.cStudent.DataPropertyName = nameof(Project.Student.S_fullname);
+            
             dgvProject.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProject.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
             BindingSource source = new BindingSource();
-            source.DataSource =ProjectController.getAllProject();
+            var projects = ProjectController.getAllProject();
+            source.DataSource = projects;
             this.dgvProject.DataSource = source;
 
         }
@@ -47,7 +48,7 @@ namespace DBProjectStudent.View
             //Student
             //project.Student = new List<Student>();
             //string displaystudent = "";
-            //for(int i=0;i<listStudents.Items.Count;i++)
+            //for (int i = 0; i < listStudents.Items.Count; i++)
             //{
             //    displaystudent = (this.listStudents.Items[i]).ToString();
             //    project.Student.Add((this.listStudents.Items[i]) as Student);
@@ -112,7 +113,7 @@ namespace DBProjectStudent.View
             for (int i = 0; i < searchStudent.Count; i++)
             {
                 this.listStudentSearch.Items.Add(searchStudent[i]);
-            }
+            } 
             if (txtStudentSearch.Text == "")
                 this.listStudentSearch.Items.Clear();
         }
@@ -123,7 +124,7 @@ namespace DBProjectStudent.View
             // check repeat user
             for (int i = 0; i < this.listStudents.Items.Count; i++)
             {
-                if (((Student)this.listStudents.Items[i]).S_fullname == student.S_fullname)
+                if (((Student)this.listStudents.Items[i]).S_name == student.S_name)
                 {
                     MessageBox.Show("Student name is exist!!");
                     return;
@@ -164,6 +165,7 @@ namespace DBProjectStudent.View
 
         private void listLectureSearch_DoubleClick(object sender, EventArgs e)
         {
+            //test DemoBranch
             Lecture lecture = (Lecture)this.listLectureSearch.SelectedItem;
             // check repeat user
             for (int i = 0; i < this.listLecture.Items.Count; i++)
@@ -184,6 +186,11 @@ namespace DBProjectStudent.View
             {
                 this.listLecture.Items.RemoveAt(this.listLecture.SelectedIndex);
             }
+        }
+
+        private void listStudentSearch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
