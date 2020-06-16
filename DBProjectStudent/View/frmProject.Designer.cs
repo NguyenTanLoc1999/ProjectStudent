@@ -41,11 +41,6 @@
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvProject = new System.Windows.Forms.DataGridView();
-            this.cID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cFromtime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cTotime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.listStudentSearch = new System.Windows.Forms.ListBox();
             this.txtStudentSearch = new System.Windows.Forms.TextBox();
@@ -54,7 +49,11 @@
             this.listLectureSearch = new System.Windows.Forms.ListBox();
             this.txtLectureSearch = new System.Windows.Forms.TextBox();
             this.listLecture = new System.Windows.Forms.ListBox();
-            this.cStudent = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cFromtime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cTotime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProject)).BeginInit();
             this.SuspendLayout();
             // 
@@ -190,39 +189,13 @@
             this.cTitle,
             this.cDescription,
             this.cFromtime,
-            this.cTotime,
-            this.cStudent});
+            this.cTotime});
             this.dgvProject.Location = new System.Drawing.Point(3, 218);
             this.dgvProject.Name = "dgvProject";
             this.dgvProject.RowTemplate.Height = 24;
             this.dgvProject.Size = new System.Drawing.Size(1570, 405);
             this.dgvProject.TabIndex = 24;
             this.dgvProject.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProject_CellContentClick);
-            // 
-            // cID
-            // 
-            this.cID.HeaderText = "ID";
-            this.cID.Name = "cID";
-            // 
-            // cTitle
-            // 
-            this.cTitle.HeaderText = "Title";
-            this.cTitle.Name = "cTitle";
-            // 
-            // cDescription
-            // 
-            this.cDescription.HeaderText = "Description";
-            this.cDescription.Name = "cDescription";
-            // 
-            // cFromtime
-            // 
-            this.cFromtime.HeaderText = "From Time";
-            this.cFromtime.Name = "cFromtime";
-            // 
-            // cTotime
-            // 
-            this.cTotime.HeaderText = "To Time";
-            this.cTotime.Name = "cTotime";
             // 
             // label6
             // 
@@ -242,6 +215,7 @@
             this.listStudentSearch.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listStudentSearch.Size = new System.Drawing.Size(120, 84);
             this.listStudentSearch.TabIndex = 27;
+            this.listStudentSearch.SelectedIndexChanged += new System.EventHandler(this.listStudentSearch_SelectedIndexChanged);
             this.listStudentSearch.DoubleClick += new System.EventHandler(this.listStudentSearch_DoubleClick);
             // 
             // txtStudentSearch
@@ -302,10 +276,30 @@
             this.listLecture.TabIndex = 29;
             this.listLecture.DoubleClick += new System.EventHandler(this.listLecture_DoubleClick);
             // 
-            // cStudent
+            // cID
             // 
-            this.cStudent.HeaderText = "Student";
-            this.cStudent.Name = "cStudent";
+            this.cID.HeaderText = "ID";
+            this.cID.Name = "cID";
+            // 
+            // cTitle
+            // 
+            this.cTitle.HeaderText = "Title";
+            this.cTitle.Name = "cTitle";
+            // 
+            // cDescription
+            // 
+            this.cDescription.HeaderText = "Description";
+            this.cDescription.Name = "cDescription";
+            // 
+            // cFromtime
+            // 
+            this.cFromtime.HeaderText = "From Time";
+            this.cFromtime.Name = "cFromtime";
+            // 
+            // cTotime
+            // 
+            this.cTotime.HeaderText = "To Time";
+            this.cTotime.Name = "cTotime";
             // 
             // frmProject
             // 
@@ -358,11 +352,6 @@
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvProject;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cTitle;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cFromtime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cTotime;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ListBox listStudentSearch;
         private System.Windows.Forms.TextBox txtStudentSearch;
@@ -371,6 +360,10 @@
         private System.Windows.Forms.ListBox listLectureSearch;
         private System.Windows.Forms.TextBox txtLectureSearch;
         private System.Windows.Forms.ListBox listLecture;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cStudent;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cTitle;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cDescription;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cFromtime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cTotime;
     }
 }
