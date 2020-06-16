@@ -81,10 +81,16 @@
     <Compile Include="Model\Lecture.cs">
       <DependentUpon>DBProjectStudent.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\Progress.cs">
+      <DependentUpon>DBProjectStudent.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\Project.cs">
       <DependentUpon>DBProjectStudent.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Student.cs">
+      <DependentUpon>DBProjectStudent.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\UserLogin.cs">
       <DependentUpon>DBProjectStudent.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
