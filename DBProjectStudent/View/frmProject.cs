@@ -66,7 +66,7 @@ namespace DBProjectStudent.View
             string displaystudent = "";
             for (int i = 0; i < listStudents.Items.Count; i++)
             {
-                displaystudent = (this.listStudents.Items[i]).ToString();
+                displaystudent = (this.listStudents.Items[i]).ToString()+ " ";
                 project.Students.Add((this.listStudents.Items[i]) as Student);
             }
             //project.Lecture = this.listStudents.Text.Trim();
@@ -81,7 +81,11 @@ namespace DBProjectStudent.View
             {
                 MessageBox.Show("Error in adding a new project!!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            else
+            {
+                MessageBox.Show("Add success!!!", "Note", MessageBoxButtons.OK,MessageBoxIcon.Information);
 
+            }
 
             BindingSource source = new BindingSource();
             source.DataSource = ProjectController.getAllProject();
@@ -98,7 +102,7 @@ namespace DBProjectStudent.View
                 rowSelected.P_description = dgvProject.SelectedRows[0].Cells[2].Value.ToString();
                 rowSelected.P_fromtime = DateTime.Parse(dgvProject.SelectedRows[0].Cells[3].Value.ToString());
                 rowSelected.P_totime = DateTime.Parse(dgvProject.SelectedRows[0].Cells[4].Value.ToString());
-
+                rowSelected.P_point = int.Parse(dgvProject.SelectedRows[0].Cells[4].Value.ToString());
                 //rowSelected.images = dgvProduct.SelectedRows[0].Cells["Images"].Value.ToString();
                 //rowSelected.price = dgvProject.SelectedRows[0].Cells["Price"].Value.ToString();
                 //rowSelected.idTypePro = int.Parse(dgvProduct.SelectedRows[0].Cells["TypeProduct"].Value.ToString());
@@ -110,7 +114,7 @@ namespace DBProjectStudent.View
                 txtDescription.Text = rowSelected.P_description;
                 dateTimeFrom.Text = rowSelected.P_fromtime.ToString();
                 dateTimeTo.Text = rowSelected.P_totime.ToString();
-
+                txtPoint.Text = rowSelected.P_point.ToString();
 
                 //int indexGender = listgender.FindIndex(s => s == rowSelected.gender);
                 //cmbGender.SelectedIndex = indexGender;
@@ -228,6 +232,7 @@ namespace DBProjectStudent.View
             }
             else
             {
+                MessageBox.Show("Delete success!!!", "Note", MessageBoxButtons.OK);
                 BindingSource source = new BindingSource();
                 source.DataSource = ProjectController.getAllProject();
                 this.dgvProject.DataSource = source;
