@@ -15,9 +15,24 @@ namespace DBProjectStudent.View
 {
     public partial class frmProject : Form
     {
+        private List<string> getIDLecture()
+        {
+            List<string> lectures = new List<string>();
+            using (var _context = new DBProjectStudentEntities())
+            {
+                var listid = (from t in _context.Lectures
+                             select t.L_ID).ToList();
+                foreach(var a in listid)
+                {
+                    lectures.Add(a);                   
+                }
+            }
+            return lectures;
+        }
         Project rowSelected;
         public frmProject()
         {
+            
             InitializeComponent();
             this.cID.DataPropertyName = nameof(Project.P_ID);
             this.cTitle.DataPropertyName = nameof(Project.P_title);
@@ -28,12 +43,12 @@ namespace DBProjectStudent.View
             
             dgvProject.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProject.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
+            
             BindingSource source = new BindingSource();
             var projects = ProjectController.getAllProject();
             source.DataSource = projects;
             this.dgvProject.DataSource = source;
-
+            this.cmbLecturerID.DataSource = getIDLecture();
         }
 
         private void btnSaveEvent_Click(object sender, EventArgs e)
@@ -44,17 +59,24 @@ namespace DBProjectStudent.View
             project.P_description = this.txtTitle.Text.Trim();
             project.P_fromtime = this.dateTimeFrom.Value;
             project.P_totime = this.dateTimeTo.Value;
-
+            project.P_point = int.Parse(this.txtPoint.Text.Trim());
+            project.L_ID = this.cmbLecturerID.Text.Trim();
             //Student
-            //project.Student = new List<Student>();
+            project.Students = new List<Student>();
+            string displaystudent = "";
+            for (int i = 0; i < listStudents.Items.Count; i++)
+            {
+                displaystudent = (this.listStudents.Items[i]).ToString();
+                project.Students.Add((this.listStudents.Items[i]) as Student);
+            }
+            //project.Lecture = this.listStudents.Text.Trim();
+            //project.Lecture = new List<Lecture>();
             //string displaystudent = "";
             //for (int i = 0; i < listStudents.Items.Count; i++)
             //{
             //    displaystudent = (this.listStudents.Items[i]).ToString();
             //    project.Student.Add((this.listStudents.Items[i]) as Student);
             //}
-            //project.Lecture = this.listStudents.Text.Trim();
-
             if (ProjectController.addProject(project) == false)
             {
                 MessageBox.Show("Error in adding a new project!!!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -142,55 +164,74 @@ namespace DBProjectStudent.View
             }
         }
 
-        private void txtLectureSearch_TextChanged(object sender, EventArgs e)
-        {
-            List<Lecture> searchlecture = LectureController.getAllLecture(this.txtLectureSearch.Text.Trim());
-            if (searchlecture.Count >= 0)
-            {
-                this.listLectureSearch.Visible = true;
-            }
-            else
-            {
-                this.listLectureSearch.Visible = false;
-            }
-            //show to the list box
-            this.listLectureSearch.Items.Clear();
-            for (int i = 0; i < searchlecture.Count; i++)
-            {
-                this.listLectureSearch.Items.Add(searchlecture[i]);
-            }
-            if (txtLectureSearch.Text == "")
-                this.listLectureSearch.Items.Clear();
-        }
+        //private void txtLectureSearch_TextChanged(object sender, EventArgs e)
+        //{
+        //    List<Lecture> searchlecture = LectureController.getAllLecture(this.txtLectureSearch.Text.Trim());
+        //    if (searchlecture.Count >= 0)
+        //    {
+        //        this.listLectureSearch.Visible = true;
+        //    }
+        //    else
+        //    {
+        //        this.listLectureSearch.Visible = false;
+        //    }
+        //    //show to the list box
+        //    this.listLectureSearch.Items.Clear();
+        //    for (int i = 0; i < searchlecture.Count; i++)
+        //    {
+        //        this.listLectureSearch.Items.Add(searchlecture[i]);
+        //    }
+        //    if (txtLectureSearch.Text == "")
+        //        this.listLectureSearch.Items.Clear();
+        //}
 
-        private void listLectureSearch_DoubleClick(object sender, EventArgs e)
-        {
-            //test DemoBranch
-            Lecture lecture = (Lecture)this.listLectureSearch.SelectedItem;
-            // check repeat user
-            for (int i = 0; i < this.listLecture.Items.Count; i++)
-            {
-                if (((Lecture)this.listLecture.Items[i]).L_fullname == lecture.L_fullname)
-                {
-                    MessageBox.Show("Lecture name is exist!!");
-                    return;
-                }
-            }
-            this.listLecture.Items.Add(lecture);
-            this.listLectureSearch.Visible = false;
-        }
+        //private void listLectureSearch_DoubleClick(object sender, EventArgs e)
+        //{
+        //    //test DemoBranch
+        //    Lecture lecture = (Lecture)this.listLectureSearch.SelectedItem;
+        //    // check repeat user
+        //    for (int i = 0; i < this.listLecture.Items.Count; i++)
+        //    {
+        //        if (((Lecture)this.listLecture.Items[i]).L_fullname == lecture.L_fullname)
+        //        {
+        //            MessageBox.Show("Lecture name is exist!!");
+        //            return;
+        //        }
+        //    }
+        //    this.listLecture.Items.Add(lecture);
+        //    this.listLectureSearch.Visible = false;
+        //}
 
-        private void listLecture_DoubleClick(object sender, EventArgs e)
-        {
-            if (this.listLecture.SelectedIndex >= 0)
-            {
-                this.listLecture.Items.RemoveAt(this.listLecture.SelectedIndex);
-            }
-        }
+        //private void listLecture_DoubleClick(object sender, EventArgs e)
+        //{
+        //    if (this.listLecture.SelectedIndex >= 0)
+        //    {
+        //        this.listLecture.Items.RemoveAt(this.listLecture.SelectedIndex);
+        //    }
+        //}
 
         private void listStudentSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (this.dgvProject.SelectedRows.Count <= 0)
+            {
+                return;
+            }
+            int projectname = int.Parse(this.dgvProject.SelectedRows[0].Cells[0].Value.ToString().Trim());
+            if (ProjectController.DeleteProject(projectname) == false)
+            {
+                MessageBox.Show("Cannot delete project!!!");
+            }
+            else
+            {
+                BindingSource source = new BindingSource();
+                source.DataSource = ProjectController.getAllProject();
+                this.dgvProject.DataSource = source;
+            }
         }
     }
 }

@@ -34,15 +34,17 @@ namespace ProjectStudent.Controller
             using (var _context = new DBProjectStudentEntities())
             {
                 var project = (from t in _context.Projects.AsEnumerable()
-                            select new
-                            {
-                                P_ID = t.P_ID,
-                                P_title = t.P_title,
-                                P_description = t.P_description,
-                                P_fromtime = t.P_fromtime,
-                                P_totime = t.P_totime,
-                                S_ID = t.S_ID,
-                                Student = t.Student
+                               select new
+                               {
+                                   P_ID = t.P_ID,
+                                   P_title = t.P_title,
+                                   P_description = t.P_description,
+                                   P_fromtime = t.P_fromtime,
+                                   P_totime = t.P_totime,
+                                   P_point = t.P_point,
+                                   //Students = t.Students,
+                                   L_ID = t.L_ID,
+                                   Lecture = t.Lecture
 
 
                             }).Select(x => new Project
@@ -52,8 +54,11 @@ namespace ProjectStudent.Controller
                                 P_description = x.P_description,
                                 P_fromtime = x.P_fromtime,
                                 P_totime = x.P_totime,
-                                S_ID = x.S_ID,
-                                Student = x.Student
+                                P_point = x.P_point,
+                                //Students = x.Students,
+                                L_ID = x.L_ID,
+
+                                Lecture = x.Lecture
 
                             });
                 return project.ToList();
@@ -62,17 +67,23 @@ namespace ProjectStudent.Controller
         public static bool addProject(Project project)
         {
             using (var _context = new DBProjectStudentEntities())
+            {               
+                _context.Projects.Add(project);
+                _context.SaveChanges();
+                return true;
+            }
+        }
+        public static bool DeleteProject(int idproject)
+        {
+            using (var _context = new DBProjectStudentEntities())
             {
-                try
-                {
-                    _context.Projects.Add(project);
-                    _context.SaveChanges();
-                    return true;
-                }
-                catch (Exception _)
-                {
-                    return false;
-                }
+                var project = (from x in _context.Projects
+                            where x.P_ID == idproject
+                               select x).Single();
+
+                _context.Projects.Remove(project);
+                _context.SaveChanges();
+                return true;
             }
         }
     }

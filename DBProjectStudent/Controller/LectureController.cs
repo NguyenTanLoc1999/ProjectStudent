@@ -9,7 +9,7 @@ namespace DBProjectStudent.Controller
 {
     public class LectureController
     {
-        public static int getIDfromDB()
+        public static string getIDfromDB()
         {
             using (var _context = new DBProjectStudentEntities())
             {
@@ -18,14 +18,7 @@ namespace DBProjectStudent.Controller
 
                 //return int.Parse(listid.Max()) + 1;
 
-                string maxID = listid.Max() + 1;
-                int i;
-                for (i = 1; i < int.Parse(maxID); i++)
-                {
-                    if (listid.Where(x => x == i.ToString()).Count() <= 0)
-                    { return i; }
-                }
-                return i + 1;
+                return listid.ToString();
             }
         }
         public static List<Lecture> getAllLecture()

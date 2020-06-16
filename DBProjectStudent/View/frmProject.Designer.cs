@@ -41,19 +41,19 @@
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvProject = new System.Windows.Forms.DataGridView();
-            this.label6 = new System.Windows.Forms.Label();
-            this.listStudentSearch = new System.Windows.Forms.ListBox();
-            this.txtStudentSearch = new System.Windows.Forms.TextBox();
-            this.listStudents = new System.Windows.Forms.ListBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.listLectureSearch = new System.Windows.Forms.ListBox();
-            this.txtLectureSearch = new System.Windows.Forms.TextBox();
-            this.listLecture = new System.Windows.Forms.ListBox();
             this.cID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cFromtime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cTotime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label6 = new System.Windows.Forms.Label();
+            this.listStudentSearch = new System.Windows.Forms.ListBox();
+            this.txtStudentSearch = new System.Windows.Forms.TextBox();
+            this.listStudents = new System.Windows.Forms.ListBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtPoint = new System.Windows.Forms.TextBox();
+            this.cmbLecturerID = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProject)).BeginInit();
             this.SuspendLayout();
             // 
@@ -68,18 +68,19 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(555, 170);
+            this.btnDelete.Location = new System.Drawing.Point(381, 171);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(133, 42);
             this.btnDelete.TabIndex = 22;
             this.btnDelete.Text = "Delete Project";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnUpdate
             // 
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(367, 169);
+            this.btnUpdate.Location = new System.Drawing.Point(193, 170);
             this.btnUpdate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(135, 42);
@@ -90,7 +91,7 @@
             // btnSaveProject
             // 
             this.btnSaveProject.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSaveProject.Location = new System.Drawing.Point(193, 169);
+            this.btnSaveProject.Location = new System.Drawing.Point(19, 170);
             this.btnSaveProject.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSaveProject.Name = "btnSaveProject";
             this.btnSaveProject.Size = new System.Drawing.Size(127, 42);
@@ -197,6 +198,31 @@
             this.dgvProject.TabIndex = 24;
             this.dgvProject.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProject_CellContentClick);
             // 
+            // cID
+            // 
+            this.cID.HeaderText = "ID";
+            this.cID.Name = "cID";
+            // 
+            // cTitle
+            // 
+            this.cTitle.HeaderText = "Title";
+            this.cTitle.Name = "cTitle";
+            // 
+            // cDescription
+            // 
+            this.cDescription.HeaderText = "Description";
+            this.cDescription.Name = "cDescription";
+            // 
+            // cFromtime
+            // 
+            this.cFromtime.HeaderText = "From Time";
+            this.cFromtime.Name = "cFromtime";
+            // 
+            // cTotime
+            // 
+            this.cTotime.HeaderText = "To Time";
+            this.cTotime.Name = "cTotime";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -237,79 +263,52 @@
             this.listStudents.TabIndex = 25;
             this.listStudents.DoubleClick += new System.EventHandler(this.listStudents_DoubleClick);
             // 
-            // label7
+            // label9
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(1260, 29);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(173, 20);
-            this.label7.TabIndex = 32;
-            this.label7.Text = "Search Lecture Name";
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(595, 118);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(47, 20);
+            this.label9.TabIndex = 34;
+            this.label9.Text = "Point";
             // 
-            // listLectureSearch
+            // txtPoint
             // 
-            this.listLectureSearch.FormattingEnabled = true;
-            this.listLectureSearch.ItemHeight = 20;
-            this.listLectureSearch.Location = new System.Drawing.Point(1439, 70);
-            this.listLectureSearch.Name = "listLectureSearch";
-            this.listLectureSearch.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listLectureSearch.Size = new System.Drawing.Size(120, 84);
-            this.listLectureSearch.TabIndex = 31;
-            this.listLectureSearch.DoubleClick += new System.EventHandler(this.listLectureSearch_DoubleClick);
+            this.txtPoint.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPoint.Location = new System.Drawing.Point(691, 118);
+            this.txtPoint.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtPoint.Name = "txtPoint";
+            this.txtPoint.Size = new System.Drawing.Size(249, 27);
+            this.txtPoint.TabIndex = 35;
             // 
-            // txtLectureSearch
+            // cmbLecturerID
             // 
-            this.txtLectureSearch.Location = new System.Drawing.Point(1439, 22);
-            this.txtLectureSearch.Name = "txtLectureSearch";
-            this.txtLectureSearch.Size = new System.Drawing.Size(120, 27);
-            this.txtLectureSearch.TabIndex = 30;
-            this.txtLectureSearch.TextChanged += new System.EventHandler(this.txtLectureSearch_TextChanged);
+            this.cmbLecturerID.FormattingEnabled = true;
+            this.cmbLecturerID.Location = new System.Drawing.Point(773, 170);
+            this.cmbLecturerID.Name = "cmbLecturerID";
+            this.cmbLecturerID.Size = new System.Drawing.Size(167, 28);
+            this.cmbLecturerID.TabIndex = 36;
             // 
-            // listLecture
+            // label8
             // 
-            this.listLecture.FormattingEnabled = true;
-            this.listLecture.ItemHeight = 20;
-            this.listLecture.Location = new System.Drawing.Point(1302, 71);
-            this.listLecture.Name = "listLecture";
-            this.listLecture.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listLecture.Size = new System.Drawing.Size(120, 84);
-            this.listLecture.TabIndex = 29;
-            this.listLecture.DoubleClick += new System.EventHandler(this.listLecture_DoubleClick);
-            // 
-            // cID
-            // 
-            this.cID.HeaderText = "ID";
-            this.cID.Name = "cID";
-            // 
-            // cTitle
-            // 
-            this.cTitle.HeaderText = "Title";
-            this.cTitle.Name = "cTitle";
-            // 
-            // cDescription
-            // 
-            this.cDescription.HeaderText = "Description";
-            this.cDescription.Name = "cDescription";
-            // 
-            // cFromtime
-            // 
-            this.cFromtime.HeaderText = "From Time";
-            this.cFromtime.Name = "cFromtime";
-            // 
-            // cTotime
-            // 
-            this.cTotime.HeaderText = "To Time";
-            this.cTotime.Name = "cTotime";
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(595, 173);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(146, 20);
+            this.label8.TabIndex = 37;
+            this.label8.Text = "Search ID Lecture";
             // 
             // frmProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1573, 635);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.listLectureSearch);
-            this.Controls.Add(this.txtLectureSearch);
-            this.Controls.Add(this.listLecture);
+            this.ClientSize = new System.Drawing.Size(1257, 635);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.cmbLecturerID);
+            this.Controls.Add(this.txtPoint);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.listStudentSearch);
             this.Controls.Add(this.txtStudentSearch);
@@ -356,14 +355,14 @@
         private System.Windows.Forms.ListBox listStudentSearch;
         private System.Windows.Forms.TextBox txtStudentSearch;
         private System.Windows.Forms.ListBox listStudents;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ListBox listLectureSearch;
-        private System.Windows.Forms.TextBox txtLectureSearch;
-        private System.Windows.Forms.ListBox listLecture;
         private System.Windows.Forms.DataGridViewTextBoxColumn cID;
         private System.Windows.Forms.DataGridViewTextBoxColumn cTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn cDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn cFromtime;
         private System.Windows.Forms.DataGridViewTextBoxColumn cTotime;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtPoint;
+        private System.Windows.Forms.ComboBox cmbLecturerID;
+        private System.Windows.Forms.Label label8;
     }
 }
