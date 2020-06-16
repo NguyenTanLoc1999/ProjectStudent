@@ -34,7 +34,7 @@ create table Project
 )
 create table UserLogin
 (
-	ID varchar(20)primary key,
+	ID varchar(20) primary key,
 	Pass varchar(20),
 	roleuser varchar(10),
 	foreign key(ID) references Student(S_ID),
@@ -42,12 +42,22 @@ create table UserLogin
 )
 create table Progress
 (
-	P_ID int,
+	Pro_ID int primary key,
 	Progress1 nvarchar(100),
 	Progress2 nvarchar(100),
 	Progress3 nvarchar(100),
 	Progress4 nvarchar(100),
 	LinkSource varchar(100),
-	foreign key(P_ID) references Project(P_ID)
-	
+	foreign key(Pro_ID) references Project(P_ID)	
 )
+--alter table Project
+--drop  constraint [FK__Project__S_ID__4D94879B]
+--drop table Student
+--drop table Project
+--drop table Lecture
+--drop table Progress
+ALTER TABLE Student
+ ADD S_gender VARCHAR(10)
+
+ ALTER TABLE Lecture
+ ADD L_gender VARCHAR(10)

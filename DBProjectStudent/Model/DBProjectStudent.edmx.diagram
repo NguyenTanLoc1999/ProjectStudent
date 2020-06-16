@@ -5,11 +5,15 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="9a5d878273b046d68777d73da8aab9a4" Name="Diagram1" ZoomLevel="85">
-        <EntityTypeShape EntityType="DBProjectStudentModel.Lecture" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBProjectStudentModel.Project" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBProjectStudentModel.Student" Width="1.5" PointX="5.375" PointY="3.125" IsExpanded="true" />
-        <AssociationConnector Association="DBProjectStudentModel.FK__Project__L_ID__3B75D760" ManuallyRouted="false" />
-        <AssociationConnector Association="DBProjectStudentModel.FK__Project__S_ID__3A81B327" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DBProjectStudentModel.Lecture" Width="1.5" PointX="2" PointY="1.375" />
+        <EntityTypeShape EntityType="DBProjectStudentModel.Project" Width="1.5" PointX="4.25" PointY="1.375" />
+        <EntityTypeShape EntityType="DBProjectStudentModel.Student" Width="1.5" PointX="6.5" PointY="1.25" />
+        <EntityTypeShape EntityType="DBProjectStudentModel.UserLogin" Width="1.5" PointX="8.75" PointY="1.875" />
+        <AssociationConnector Association="DBProjectStudentModel.FK__Project__L_ID__778AC167" />
+        <AssociationConnector Association="DBProjectStudentModel.FK__Student__P_ID__7A672E12" />
+        <AssociationConnector Association="DBProjectStudentModel.FK__UserLogin__ID__7D439ABD" />
+        <EntityTypeShape EntityType="DBProjectStudentModel.Progress" Width="1.5" PointX="4.875" PointY="5" />
+        <AssociationConnector Association="DBProjectStudentModel.FK__Progress__Pro_ID__02084FDA" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

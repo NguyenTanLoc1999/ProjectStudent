@@ -12,19 +12,15 @@ namespace DBProjectStudent.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Student
+    public partial class Progress
     {
-        public string S_ID { get; set; }
-        public string S_name { get; set; }
-        public string S_fullname { get; set; }
-        public string S_major { get; set; }
-        public Nullable<System.DateTime> S_birthday { get; set; }
-        public string S_phone { get; set; }
-        public string S_email { get; set; }
-        public Nullable<int> P_ID { get; set; }
-        public string S_gender { get; set; }
+        public int Pro_ID { get; set; }
+        public string Progress1 { get; set; }
+        public string Progress2 { get; set; }
+        public string Progress3 { get; set; }
+        public string Progress4 { get; set; }
+        public string LinkSource { get; set; }
     
         public virtual Project Project { get; set; }
-        public virtual UserLogin UserLogin { get; set; }
     }
 }
