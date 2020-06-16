@@ -84,7 +84,6 @@
     <Compile Include="Model\Project.cs">
       <DependentUpon>DBProjectStudent.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\ProjectManagement.cs" />
     <Compile Include="Model\Student.cs">
       <DependentUpon>DBProjectStudent.tt</DependentUpon>
     </Compile>

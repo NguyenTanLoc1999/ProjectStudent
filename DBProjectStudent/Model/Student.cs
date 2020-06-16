@@ -37,4 +37,5 @@ namespace DBProjectStudent.Model
             return this.S_fullname;
         }
     }
+
 }

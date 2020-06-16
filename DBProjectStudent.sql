@@ -48,5 +48,6 @@ create table Progress
 	Progress3 nvarchar(100),
 	Progress4 nvarchar(100),
 	LinkSource varchar(100),
+	foreign key(P_ID) references Project(P_ID)
 	
 )
