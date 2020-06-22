@@ -304,7 +304,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1257, 635);
+            this.ClientSize = new System.Drawing.Size(1171, 635);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.cmbLecturerID);
             this.Controls.Add(this.txtPoint);

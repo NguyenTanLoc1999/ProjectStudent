@@ -59,7 +59,7 @@ namespace DBProjectStudent.View
             project.P_description = this.txtTitle.Text.Trim();
             project.P_fromtime = this.dateTimeFrom.Value;
             project.P_totime = this.dateTimeTo.Value;
-            project.P_point = int.Parse(this.txtPoint.Text.Trim());
+            //project.P_point = int.Parse(this.txtPoint.Text.Trim());
             project.L_ID = this.cmbLecturerID.Text.Trim();
             //Student
             project.Students = new List<Student>();
@@ -150,7 +150,7 @@ namespace DBProjectStudent.View
             // check repeat user
             for (int i = 0; i < this.listStudents.Items.Count; i++)
             {
-                if (((Student)this.listStudents.Items[i]).S_name == student.S_name)
+                if (((Student)this.listStudents.Items[i]).S_ID == student.S_ID)
                 {
                     MessageBox.Show("Student name is exist!!");
                     return;
