@@ -54,9 +54,6 @@
             this.cDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cFromtime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cTotime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cL_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cL_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cS_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProject)).BeginInit();
             this.SuspendLayout();
             // 
@@ -193,10 +190,7 @@
             this.cTitle,
             this.cDescription,
             this.cFromtime,
-            this.cTotime,
-            this.cL_ID,
-            this.cL_Name,
-            this.cS_Name});
+            this.cTotime});
             this.dgvProject.Location = new System.Drawing.Point(3, 218);
             this.dgvProject.Name = "dgvProject";
             this.dgvProject.RowTemplate.Height = 24;
@@ -306,21 +300,6 @@
             this.cTotime.HeaderText = "To Time";
             this.cTotime.Name = "cTotime";
             // 
-            // cL_ID
-            // 
-            this.cL_ID.HeaderText = "Lecture ID";
-            this.cL_ID.Name = "cL_ID";
-            // 
-            // cL_Name
-            // 
-            this.cL_Name.HeaderText = "Lecture Name";
-            this.cL_Name.Name = "cL_Name";
-            // 
-            // cS_Name
-            // 
-            this.cS_Name.HeaderText = "Student Name";
-            this.cS_Name.Name = "cS_Name";
-            // 
             // frmProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
@@ -385,8 +364,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn cFromtime;
         private System.Windows.Forms.DataGridViewTextBoxColumn cTotime;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cL_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cL_Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cS_Name;
     }
 }

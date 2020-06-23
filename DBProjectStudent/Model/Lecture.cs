@@ -17,7 +17,7 @@ namespace DBProjectStudent.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Lecture()
         {
-            this.ProjectManagements = new HashSet<ProjectManagement>();
+            this.Projects = new HashSet<Project>();
         }
     
         public string L_ID { get; set; }
@@ -30,8 +30,7 @@ namespace DBProjectStudent.Model
         public string L_email { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProjectManagement> ProjectManagements { get; set; }
-
+        public virtual ICollection<Project> Projects { get; set; }
 
         public override string ToString()
         {

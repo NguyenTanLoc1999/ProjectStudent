@@ -241,10 +241,11 @@
             this.cBirthday,
             this.cPhone,
             this.cEmail});
-            this.dgvStudent.Location = new System.Drawing.Point(12, 219);
+            this.dgvStudent.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvStudent.Location = new System.Drawing.Point(0, 212);
             this.dgvStudent.Name = "dgvStudent";
             this.dgvStudent.RowTemplate.Height = 24;
-            this.dgvStudent.Size = new System.Drawing.Size(1116, 241);
+            this.dgvStudent.Size = new System.Drawing.Size(882, 241);
             this.dgvStudent.TabIndex = 39;
             // 
             // cID
@@ -291,7 +292,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1140, 489);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(882, 453);
             this.Controls.Add(this.dgvStudent);
             this.Controls.Add(this.cmbGender);
             this.Controls.Add(this.cmbMajor);
@@ -311,7 +313,10 @@
             this.Controls.Add(this.txtStudentname);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtStudentID);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.MaximizeBox = false;
             this.Name = "frmStudents";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Students Management";
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).EndInit();
             this.ResumeLayout(false);

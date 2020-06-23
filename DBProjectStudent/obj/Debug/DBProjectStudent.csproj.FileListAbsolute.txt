@@ -29,3 +29,4 @@ D:\University\3-years-semester-2\Windows_Programming\DBProjectStudent\DBProjectS
 D:\University\3-years-semester-2\Windows_Programming\DBProjectStudent\DBProjectStudent\obj\Debug\DBProjectStudent.View.frmStudents.resources
 D:\University\3-years-semester-2\Windows_Programming\DBProjectStudent\DBProjectStudent\obj\Debug\DBProjectStudent.View.frmProject.resources
 D:\University\3-years-semester-2\Windows_Programming\DBProjectStudent\DBProjectStudent\obj\Debug\DBProjectStudent.View.Login.resources
+D:\University\3-years-semester-2\Windows_Programming\DBProjectStudent\DBProjectStudent\obj\Debug\DBProjectStudent.csprojAssemblyReference.cache

@@ -62,7 +62,7 @@ namespace DBProjectStudent.View
             project.P_fromtime = this.dateTimeFrom.Value;
             project.P_totime = this.dateTimeTo.Value;
             project.P_point =this.txtPoint.Text.Trim();
-            //project.L_ID = this.cmbLecturerID.Text.Trim();
+            project.L_ID = this.cmbLecturerID.Text.Trim();
             //Student
             //project.Students = new List<Student>();
             //string displaystudent = "";

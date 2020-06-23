@@ -43,10 +43,8 @@ namespace ProjectStudent.Controller
                                    P_totime = t.P_totime,
                                    P_point = t.P_point,
                                    //Students = t.Students,
-                                   //L_ID = t.L_ID,
-                                   //Lecture = t.Lecture
-
-
+                                   L_ID = t.L_ID,
+                                   Lecture = t.Lecture
                             }).Select(x => new Project
                             {
                                 P_ID = x.P_ID,
@@ -56,9 +54,8 @@ namespace ProjectStudent.Controller
                                 P_totime = x.P_totime,
                                 P_point = x.P_point,
                                 //Students = x.Students,
-                                //L_ID = x.L_ID,
-
-                                //Lecture = x.Lecture
+                                L_ID = x.L_ID,
+                                Lecture = x.Lecture
 
                             });
                 return project.ToList();
