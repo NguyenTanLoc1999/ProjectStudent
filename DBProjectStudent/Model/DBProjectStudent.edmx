@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="DBProjectStudentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DBProjectStudentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Lecture">
           <Key>
             <PropertyRef Name="L_ID" />
@@ -13,10 +13,10 @@
           <Property Name="L_name" Type="nvarchar" MaxLength="100" />
           <Property Name="L_fullname" Type="nvarchar" MaxLength="50" />
           <Property Name="L_department" Type="nvarchar" MaxLength="50" />
+          <Property Name="L_gender" Type="varchar" MaxLength="10" />
           <Property Name="L_birthday" Type="datetime" />
           <Property Name="L_phone" Type="nvarchar" MaxLength="50" />
           <Property Name="L_email" Type="nvarchar" MaxLength="50" />
-          <Property Name="L_gender" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="Progress">
           <Key>
@@ -39,8 +39,14 @@
           <Property Name="P_fromtime" Type="datetime" />
           <Property Name="P_totime" Type="datetime" />
           <Property Name="P_point" Type="varchar" MaxLength="10" />
-          <Property Name="L_ID" Type="varchar" MaxLength="20" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'DBProjectStudent.dbo.ProjectManagement' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="ProjectManagement">
+          <Property Name="P_ID" Type="int" />
+          <Property Name="L_ID" Type="varchar" MaxLength="20" />
+          <Property Name="S_ID" Type="varchar" MaxLength="20" />
+        </EntityType>-->
         <EntityType Name="Student">
           <Key>
             <PropertyRef Name="S_ID" />
@@ -52,7 +58,6 @@
           <Property Name="S_birthday" Type="datetime" />
           <Property Name="S_phone" Type="nvarchar" MaxLength="50" />
           <Property Name="S_email" Type="nvarchar" MaxLength="50" />
-          <Property Name="P_ID" Type="int" />
           <Property Name="S_gender" Type="varchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="UserLogin">
@@ -63,7 +68,7 @@
           <Property Name="Pass" Type="varchar" MaxLength="20" />
           <Property Name="roleuser" Type="varchar" MaxLength="10" />
         </EntityType>
-        <Association Name="FK__Progress__Pro_ID__1DB06A4F">
+        <Association Name="FK__Progress__Pro_ID__32AB8735">
           <End Role="Project" Type="Self.Project" Multiplicity="1" />
           <End Role="Progress" Type="Self.Progress" Multiplicity="0..1" />
           <ReferentialConstraint>
@@ -75,114 +80,43 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Project__L_ID__1AD3FDA4">
-          <End Role="Lecture" Type="Self.Lecture" Multiplicity="0..1" />
-          <End Role="Project" Type="Self.Project" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Lecture">
-              <PropertyRef Name="L_ID" />
-            </Principal>
-            <Dependent Role="Project">
-              <PropertyRef Name="L_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Student__P_ID__208CD6FA">
-          <End Role="Project" Type="Self.Project" Multiplicity="0..1" />
-          <End Role="Student" Type="Self.Student" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Project">
-              <PropertyRef Name="P_ID" />
-            </Principal>
-            <Dependent Role="Student">
-              <PropertyRef Name="P_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__UserLogin__ID__245D67DE">
-          <End Role="Student" Type="Self.Student" Multiplicity="1" />
-          <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Student">
-              <PropertyRef Name="S_ID" />
-            </Principal>
-            <Dependent Role="UserLogin">
-              <PropertyRef Name="ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <!--Errors Found During Generation:
+error 6004: The table 'DBProjectStudent.dbo.ProjectManagement' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__ProjectMan__L_ID__2BFE89A6" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'DBProjectStudent.dbo.ProjectManagement' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__ProjectMan__P_ID__2CF2ADDF" />-->
+        <!--Errors Found During Generation:
+error 6004: The table 'DBProjectStudent.dbo.ProjectManagement' is referenced by a relationship, but cannot be found.
+        <Association Name="FK__ProjectMan__S_ID__2DE6D218" />-->
         <EntityContainer Name="DBProjectStudentModelStoreContainer">
           <EntitySet Name="Lecture" EntityType="Self.Lecture" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Progress" EntityType="Self.Progress" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserLogin" EntityType="Self.UserLogin" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Progress__Pro_ID__1DB06A4F" Association="Self.FK__Progress__Pro_ID__1DB06A4F">
+          <AssociationSet Name="FK__Progress__Pro_ID__32AB8735" Association="Self.FK__Progress__Pro_ID__32AB8735">
             <End Role="Project" EntitySet="Project" />
             <End Role="Progress" EntitySet="Progress" />
           </AssociationSet>
-          <AssociationSet Name="FK__Project__L_ID__1AD3FDA4" Association="Self.FK__Project__L_ID__1AD3FDA4">
-            <End Role="Lecture" EntitySet="Lecture" />
-            <End Role="Project" EntitySet="Project" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Student__P_ID__208CD6FA" Association="Self.FK__Student__P_ID__208CD6FA">
-            <End Role="Project" EntitySet="Project" />
-            <End Role="Student" EntitySet="Student" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UserLogin__ID__245D67DE" Association="Self.FK__UserLogin__ID__245D67DE">
-            <End Role="Student" EntitySet="Student" />
-            <End Role="UserLogin" EntitySet="UserLogin" />
-          </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBProjectStudentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="DBProjectStudentEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Lectures" EntityType="DBProjectStudentModel.Lecture" />
-          <EntitySet Name="UserLogins" EntityType="DBProjectStudentModel.UserLogin" />
-          <EntitySet Name="Progresses" EntityType="DBProjectStudentModel.Progress" />
-          <EntitySet Name="Projects" EntityType="DBProjectStudentModel.Project" />
-          <AssociationSet Name="FK__Project__L_ID__1AD3FDA4" Association="DBProjectStudentModel.FK__Project__L_ID__1AD3FDA4">
-            <End Role="Lecture" EntitySet="Lectures" />
-            <End Role="Project" EntitySet="Projects" />
-          </AssociationSet>
-          <AssociationSet Name="FK__Progress__Pro_ID__1DB06A4F" Association="DBProjectStudentModel.FK__Progress__Pro_ID__1DB06A4F">
-            <End Role="Project" EntitySet="Projects" />
-            <End Role="Progress" EntitySet="Progresses" />
-          </AssociationSet>
-          <EntitySet Name="Students" EntityType="DBProjectStudentModel.Student" />
-          <AssociationSet Name="FK__Student__P_ID__208CD6FA" Association="DBProjectStudentModel.FK__Student__P_ID__208CD6FA">
-            <End Role="Project" EntitySet="Projects" />
-            <End Role="Student" EntitySet="Students" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UserLogin__ID__245D67DE" Association="DBProjectStudentModel.FK__UserLogin__ID__245D67DE">
-            <End Role="Student" EntitySet="Students" />
-            <End Role="UserLogin" EntitySet="UserLogins" />
-          </AssociationSet>
-        </EntityContainer>
         <EntityType Name="Lecture">
           <Key>
             <PropertyRef Name="L_ID" />
           </Key>
-          <Property Name="L_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="L_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="L_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="L_fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="L_department" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="L_gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="L_birthday" Type="DateTime" Precision="3" />
           <Property Name="L_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="L_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="L_gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Projects" Relationship="DBProjectStudentModel.FK__Project__L_ID__1AD3FDA4" FromRole="Lecture" ToRole="Project" />
-        </EntityType>
-        <EntityType Name="UserLogin">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Pass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="roleuser" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Student" Relationship="DBProjectStudentModel.FK__UserLogin__ID__245D67DE" FromRole="UserLogin" ToRole="Student" />
         </EntityType>
         <EntityType Name="Progress">
           <Key>
@@ -194,7 +128,7 @@
           <Property Name="StudentName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="LinkSource" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="Note" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Project" Relationship="DBProjectStudentModel.FK__Progress__Pro_ID__1DB06A4F" FromRole="Progress" ToRole="Project" />
+          <NavigationProperty Name="Project" Relationship="Self.FK__Progress__Pro_ID__32AB8735" FromRole="Progress" ToRole="Project" />
         </EntityType>
         <EntityType Name="Project">
           <Key>
@@ -206,26 +140,32 @@
           <Property Name="P_fromtime" Type="DateTime" Precision="3" />
           <Property Name="P_totime" Type="DateTime" Precision="3" />
           <Property Name="P_point" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="L_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Lecture" Relationship="DBProjectStudentModel.FK__Project__L_ID__1AD3FDA4" FromRole="Project" ToRole="Lecture" />
-          <NavigationProperty Name="Progress" Relationship="DBProjectStudentModel.FK__Progress__Pro_ID__1DB06A4F" FromRole="Project" ToRole="Progress" />
-          <NavigationProperty Name="Students" Relationship="DBProjectStudentModel.FK__Student__P_ID__208CD6FA" FromRole="Project" ToRole="Student" />
+          <NavigationProperty Name="Progress" Relationship="Self.FK__Progress__Pro_ID__32AB8735" FromRole="Project" ToRole="Progress" />
         </EntityType>
-        <Association Name="FK__Project__L_ID__1AD3FDA4">
-          <End Type="DBProjectStudentModel.Lecture" Role="Lecture" Multiplicity="0..1" />
-          <End Type="DBProjectStudentModel.Project" Role="Project" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Lecture">
-              <PropertyRef Name="L_ID" />
-            </Principal>
-            <Dependent Role="Project">
-              <PropertyRef Name="L_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Progress__Pro_ID__1DB06A4F">
-          <End Type="DBProjectStudentModel.Project" Role="Project" Multiplicity="1" />
-          <End Type="DBProjectStudentModel.Progress" Role="Progress" Multiplicity="0..1" />
+        <EntityType Name="Student">
+          <Key>
+            <PropertyRef Name="S_ID" />
+          </Key>
+          <Property Name="S_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="S_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="S_fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="S_major" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="S_birthday" Type="DateTime" Precision="3" />
+          <Property Name="S_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="S_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="S_gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="UserLogin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="roleuser" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__Progress__Pro_ID__32AB8735">
+          <End Role="Project" Type="Self.Project" Multiplicity="1" />
+          <End Role="Progress" Type="Self.Progress" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="Project">
               <PropertyRef Name="P_ID" />
@@ -235,46 +175,17 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Student">
-          <Key>
-            <PropertyRef Name="S_ID" />
-          </Key>
-          <Property Name="S_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="S_name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="S_fullname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="S_major" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="S_birthday" Type="DateTime" Precision="3" />
-          <Property Name="S_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="S_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="P_ID" Type="Int32" />
-          <Property Name="S_gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Project" Relationship="DBProjectStudentModel.FK__Student__P_ID__208CD6FA" FromRole="Student" ToRole="Project" />
-          <NavigationProperty Name="UserLogin" Relationship="DBProjectStudentModel.FK__UserLogin__ID__245D67DE" FromRole="Student" ToRole="UserLogin" />
-        </EntityType>
-        <Association Name="FK__Student__P_ID__208CD6FA">
-          <End Type="DBProjectStudentModel.Project" Role="Project" Multiplicity="0..1" />
-          <End Type="DBProjectStudentModel.Student" Role="Student" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Project">
-              <PropertyRef Name="P_ID" />
-            </Principal>
-            <Dependent Role="Student">
-              <PropertyRef Name="P_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__UserLogin__ID__245D67DE">
-          <End Type="DBProjectStudentModel.Student" Role="Student" Multiplicity="1" />
-          <End Type="DBProjectStudentModel.UserLogin" Role="UserLogin" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="Student">
-              <PropertyRef Name="S_ID" />
-            </Principal>
-            <Dependent Role="UserLogin">
-              <PropertyRef Name="ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityContainer Name="DBProjectStudentEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Lectures" EntityType="Self.Lecture" />
+          <EntitySet Name="Progresses" EntityType="Self.Progress" />
+          <EntitySet Name="Projects" EntityType="Self.Project" />
+          <EntitySet Name="Students" EntityType="Self.Student" />
+          <EntitySet Name="UserLogins" EntityType="Self.UserLogin" />
+          <AssociationSet Name="FK__Progress__Pro_ID__32AB8735" Association="Self.FK__Progress__Pro_ID__32AB8735">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="Progress" EntitySet="Progresses" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -284,63 +195,61 @@
           <EntitySetMapping Name="Lectures">
             <EntityTypeMapping TypeName="DBProjectStudentModel.Lecture">
               <MappingFragment StoreEntitySet="Lecture">
-                <ScalarProperty Name="L_gender" ColumnName="L_gender" />
-                <ScalarProperty Name="L_email" ColumnName="L_email" />
-                <ScalarProperty Name="L_phone" ColumnName="L_phone" />
-                <ScalarProperty Name="L_birthday" ColumnName="L_birthday" />
-                <ScalarProperty Name="L_department" ColumnName="L_department" />
-                <ScalarProperty Name="L_fullname" ColumnName="L_fullname" />
-                <ScalarProperty Name="L_name" ColumnName="L_name" />
                 <ScalarProperty Name="L_ID" ColumnName="L_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UserLogins">
-            <EntityTypeMapping TypeName="DBProjectStudentModel.UserLogin">
-              <MappingFragment StoreEntitySet="UserLogin">
-                <ScalarProperty Name="roleuser" ColumnName="roleuser" />
-                <ScalarProperty Name="Pass" ColumnName="Pass" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="L_name" ColumnName="L_name" />
+                <ScalarProperty Name="L_fullname" ColumnName="L_fullname" />
+                <ScalarProperty Name="L_department" ColumnName="L_department" />
+                <ScalarProperty Name="L_gender" ColumnName="L_gender" />
+                <ScalarProperty Name="L_birthday" ColumnName="L_birthday" />
+                <ScalarProperty Name="L_phone" ColumnName="L_phone" />
+                <ScalarProperty Name="L_email" ColumnName="L_email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Progresses">
             <EntityTypeMapping TypeName="DBProjectStudentModel.Progress">
               <MappingFragment StoreEntitySet="Progress">
-                <ScalarProperty Name="Note" ColumnName="Note" />
-                <ScalarProperty Name="LinkSource" ColumnName="LinkSource" />
-                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
-                <ScalarProperty Name="ProgressName" ColumnName="ProgressName" />
-                <ScalarProperty Name="Pro_ID" ColumnName="Pro_ID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Pro_ID" ColumnName="Pro_ID" />
+                <ScalarProperty Name="ProgressName" ColumnName="ProgressName" />
+                <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+                <ScalarProperty Name="LinkSource" ColumnName="LinkSource" />
+                <ScalarProperty Name="Note" ColumnName="Note" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Projects">
             <EntityTypeMapping TypeName="DBProjectStudentModel.Project">
               <MappingFragment StoreEntitySet="Project">
-                <ScalarProperty Name="L_ID" ColumnName="L_ID" />
-                <ScalarProperty Name="P_point" ColumnName="P_point" />
-                <ScalarProperty Name="P_totime" ColumnName="P_totime" />
-                <ScalarProperty Name="P_fromtime" ColumnName="P_fromtime" />
-                <ScalarProperty Name="P_description" ColumnName="P_description" />
-                <ScalarProperty Name="P_title" ColumnName="P_title" />
                 <ScalarProperty Name="P_ID" ColumnName="P_ID" />
+                <ScalarProperty Name="P_title" ColumnName="P_title" />
+                <ScalarProperty Name="P_description" ColumnName="P_description" />
+                <ScalarProperty Name="P_fromtime" ColumnName="P_fromtime" />
+                <ScalarProperty Name="P_totime" ColumnName="P_totime" />
+                <ScalarProperty Name="P_point" ColumnName="P_point" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Students">
             <EntityTypeMapping TypeName="DBProjectStudentModel.Student">
               <MappingFragment StoreEntitySet="Student">
-                <ScalarProperty Name="S_gender" ColumnName="S_gender" />
-                <ScalarProperty Name="P_ID" ColumnName="P_ID" />
-                <ScalarProperty Name="S_email" ColumnName="S_email" />
-                <ScalarProperty Name="S_phone" ColumnName="S_phone" />
-                <ScalarProperty Name="S_birthday" ColumnName="S_birthday" />
-                <ScalarProperty Name="S_major" ColumnName="S_major" />
-                <ScalarProperty Name="S_fullname" ColumnName="S_fullname" />
-                <ScalarProperty Name="S_name" ColumnName="S_name" />
                 <ScalarProperty Name="S_ID" ColumnName="S_ID" />
+                <ScalarProperty Name="S_name" ColumnName="S_name" />
+                <ScalarProperty Name="S_fullname" ColumnName="S_fullname" />
+                <ScalarProperty Name="S_major" ColumnName="S_major" />
+                <ScalarProperty Name="S_birthday" ColumnName="S_birthday" />
+                <ScalarProperty Name="S_phone" ColumnName="S_phone" />
+                <ScalarProperty Name="S_email" ColumnName="S_email" />
+                <ScalarProperty Name="S_gender" ColumnName="S_gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserLogins">
+            <EntityTypeMapping TypeName="DBProjectStudentModel.UserLogin">
+              <MappingFragment StoreEntitySet="UserLogin">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="roleuser" ColumnName="roleuser" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

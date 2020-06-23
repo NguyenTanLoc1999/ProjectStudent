@@ -14,23 +14,13 @@ namespace DBProjectStudent.Model
     
     public partial class Project
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Project()
-        {
-            this.Students = new HashSet<Student>();
-        }
-    
         public int P_ID { get; set; }
         public string P_title { get; set; }
         public string P_description { get; set; }
         public Nullable<System.DateTime> P_fromtime { get; set; }
         public Nullable<System.DateTime> P_totime { get; set; }
         public string P_point { get; set; }
-        public string L_ID { get; set; }
     
-        public virtual Lecture Lecture { get; set; }
         public virtual Progress Progress { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Student> Students { get; set; }
     }
 }

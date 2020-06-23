@@ -26,9 +26,9 @@ namespace DBProjectStudent.Model
         }
     
         public virtual DbSet<Lecture> Lectures { get; set; }
-        public virtual DbSet<UserLogin> UserLogins { get; set; }
         public virtual DbSet<Progress> Progresses { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
         public virtual DbSet<Student> Students { get; set; }
+        public virtual DbSet<UserLogin> UserLogins { get; set; }
     }
 }

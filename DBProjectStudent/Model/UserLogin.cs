@@ -17,7 +17,5 @@ namespace DBProjectStudent.Model
         public string ID { get; set; }
         public string Pass { get; set; }
         public string roleuser { get; set; }
-    
-        public virtual Student Student { get; set; }
     }
 }

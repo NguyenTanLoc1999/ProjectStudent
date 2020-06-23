@@ -21,15 +21,6 @@ namespace DBProjectStudent.Model
         public Nullable<System.DateTime> S_birthday { get; set; }
         public string S_phone { get; set; }
         public string S_email { get; set; }
-        public Nullable<int> P_ID { get; set; }
         public string S_gender { get; set; }
-    
-        public virtual Project Project { get; set; }
-        public virtual UserLogin UserLogin { get; set; }
-
-        public override string ToString()
-        {
-            return this.S_fullname;
-        }
     }
 }
