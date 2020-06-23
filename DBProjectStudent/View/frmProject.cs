@@ -59,14 +59,14 @@ namespace DBProjectStudent.View
             project.P_description = this.txtTitle.Text.Trim();
             project.P_fromtime = this.dateTimeFrom.Value;
             project.P_totime = this.dateTimeTo.Value;
-            //project.P_point = int.Parse(this.txtPoint.Text.Trim());
+            project.P_point =this.txtPoint.Text.Trim();
             project.L_ID = this.cmbLecturerID.Text.Trim();
             //Student
             project.Students = new List<Student>();
             string displaystudent = "";
             for (int i = 0; i < listStudents.Items.Count; i++)
             {
-                displaystudent = (this.listStudents.Items[i]).ToString()+ " ";
+                displaystudent = (this.listStudents.Items[i]).ToString()+ "\n";
                 project.Students.Add((this.listStudents.Items[i]) as Student);
             }
             //project.Lecture = this.listStudents.Text.Trim();
