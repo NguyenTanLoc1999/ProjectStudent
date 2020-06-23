@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DBProjectStudent.Controller;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,10 @@ namespace DBProjectStudent.View
         public frmProgress()
         {
             InitializeComponent();
+
+            BindingSource source = new BindingSource();
+            source.DataSource = ProgressController.getAllProgress();
+            this.dgvProgress.DataSource = source;
         }
     }
 }

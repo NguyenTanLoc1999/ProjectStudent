@@ -45,6 +45,7 @@ namespace ProjectStudent.Controller
                                    //Students = t.Students,
                                    L_ID = t.L_ID,
                                    Lecture = t.Lecture
+
                             }).Select(x => new Project
                             {
                                 P_ID = x.P_ID,
