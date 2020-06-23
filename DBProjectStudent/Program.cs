@@ -16,7 +16,7 @@ namespace ProjectStudent
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmStudents());
+            Application.Run(new frmProject());
         }
     }
 }

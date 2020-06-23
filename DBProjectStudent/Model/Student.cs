@@ -14,6 +14,12 @@ namespace DBProjectStudent.Model
     
     public partial class Student
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Student()
+        {
+            this.ProjectManagements = new HashSet<ProjectManagement>();
+        }
+    
         public string S_ID { get; set; }
         public string S_name { get; set; }
         public string S_fullname { get; set; }
@@ -22,5 +28,13 @@ namespace DBProjectStudent.Model
         public string S_phone { get; set; }
         public string S_email { get; set; }
         public string S_gender { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProjectManagement> ProjectManagements { get; set; }
+
+        public override string ToString()
+        {
+            return this.S_fullname;
+        }
     }
 }

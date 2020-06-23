@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DBProjectStudentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DBProjectStudentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Lecture">
           <Key>
             <PropertyRef Name="L_ID" />
@@ -40,13 +40,15 @@
           <Property Name="P_totime" Type="datetime" />
           <Property Name="P_point" Type="varchar" MaxLength="10" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'DBProjectStudent.dbo.ProjectManagement' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="ProjectManagement">
+          <Key>
+            <PropertyRef Name="PM_ID" />
+          </Key>
           <Property Name="P_ID" Type="int" />
           <Property Name="L_ID" Type="varchar" MaxLength="20" />
           <Property Name="S_ID" Type="varchar" MaxLength="20" />
-        </EntityType>-->
+          <Property Name="PM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
         <EntityType Name="Student">
           <Key>
             <PropertyRef Name="S_ID" />
@@ -80,28 +82,67 @@ warning 6013: The table/view 'DBProjectStudent.dbo.ProjectManagement' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <!--Errors Found During Generation:
-error 6004: The table 'DBProjectStudent.dbo.ProjectManagement' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__ProjectMan__L_ID__2BFE89A6" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'DBProjectStudent.dbo.ProjectManagement' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__ProjectMan__P_ID__2CF2ADDF" />-->
-        <!--Errors Found During Generation:
-error 6004: The table 'DBProjectStudent.dbo.ProjectManagement' is referenced by a relationship, but cannot be found.
-        <Association Name="FK__ProjectMan__S_ID__2DE6D218" />-->
+        <Association Name="FK__ProjectMan__L_ID__2BFE89A6">
+          <End Role="Lecture" Type="Self.Lecture" Multiplicity="0..1" />
+          <End Role="ProjectManagement" Type="Self.ProjectManagement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lecture">
+              <PropertyRef Name="L_ID" />
+            </Principal>
+            <Dependent Role="ProjectManagement">
+              <PropertyRef Name="L_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProjectMan__P_ID__2CF2ADDF">
+          <End Role="Project" Type="Self.Project" Multiplicity="0..1" />
+          <End Role="ProjectManagement" Type="Self.ProjectManagement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="P_ID" />
+            </Principal>
+            <Dependent Role="ProjectManagement">
+              <PropertyRef Name="P_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProjectMan__S_ID__2DE6D218">
+          <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+          <End Role="ProjectManagement" Type="Self.ProjectManagement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="S_ID" />
+            </Principal>
+            <Dependent Role="ProjectManagement">
+              <PropertyRef Name="S_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DBProjectStudentModelStoreContainer">
           <EntitySet Name="Lecture" EntityType="Self.Lecture" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Progress" EntityType="Self.Progress" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectManagement" EntityType="Self.ProjectManagement" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserLogin" EntityType="Self.UserLogin" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Progress__Pro_ID__32AB8735" Association="Self.FK__Progress__Pro_ID__32AB8735">
             <End Role="Project" EntitySet="Project" />
             <End Role="Progress" EntitySet="Progress" />
           </AssociationSet>
+          <AssociationSet Name="FK__ProjectMan__L_ID__2BFE89A6" Association="Self.FK__ProjectMan__L_ID__2BFE89A6">
+            <End Role="Lecture" EntitySet="Lecture" />
+            <End Role="ProjectManagement" EntitySet="ProjectManagement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProjectMan__P_ID__2CF2ADDF" Association="Self.FK__ProjectMan__P_ID__2CF2ADDF">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="ProjectManagement" EntitySet="ProjectManagement" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProjectMan__S_ID__2DE6D218" Association="Self.FK__ProjectMan__S_ID__2DE6D218">
+            <End Role="Student" EntitySet="Student" />
+            <End Role="ProjectManagement" EntitySet="ProjectManagement" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DBProjectStudentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -117,6 +158,7 @@ error 6004: The table 'DBProjectStudent.dbo.ProjectManagement' is referenced by 
           <Property Name="L_birthday" Type="DateTime" Precision="3" />
           <Property Name="L_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="L_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ProjectManagements" Relationship="DBProjectStudentModel.FK__ProjectMan__L_ID__2BFE89A6" FromRole="Lecture" ToRole="ProjectManagement" />
         </EntityType>
         <EntityType Name="Progress">
           <Key>
@@ -141,6 +183,7 @@ error 6004: The table 'DBProjectStudent.dbo.ProjectManagement' is referenced by 
           <Property Name="P_totime" Type="DateTime" Precision="3" />
           <Property Name="P_point" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Progress" Relationship="Self.FK__Progress__Pro_ID__32AB8735" FromRole="Project" ToRole="Progress" />
+          <NavigationProperty Name="ProjectManagements" Relationship="DBProjectStudentModel.FK__ProjectMan__P_ID__2CF2ADDF" FromRole="Project" ToRole="ProjectManagement" />
         </EntityType>
         <EntityType Name="Student">
           <Key>
@@ -154,6 +197,7 @@ error 6004: The table 'DBProjectStudent.dbo.ProjectManagement' is referenced by 
           <Property Name="S_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="S_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="S_gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProjectManagements" Relationship="DBProjectStudentModel.FK__ProjectMan__S_ID__2DE6D218" FromRole="Student" ToRole="ProjectManagement" />
         </EntityType>
         <EntityType Name="UserLogin">
           <Key>
@@ -185,7 +229,68 @@ error 6004: The table 'DBProjectStudent.dbo.ProjectManagement' is referenced by 
             <End Role="Project" EntitySet="Projects" />
             <End Role="Progress" EntitySet="Progresses" />
           </AssociationSet>
+          <EntitySet Name="ProjectManagements" EntityType="DBProjectStudentModel.ProjectManagement" />
+          <AssociationSet Name="FK__ProjectMan__L_ID__2BFE89A6" Association="DBProjectStudentModel.FK__ProjectMan__L_ID__2BFE89A6">
+            <End Role="Lecture" EntitySet="Lectures" />
+            <End Role="ProjectManagement" EntitySet="ProjectManagements" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProjectMan__P_ID__2CF2ADDF" Association="DBProjectStudentModel.FK__ProjectMan__P_ID__2CF2ADDF">
+            <End Role="Project" EntitySet="Projects" />
+            <End Role="ProjectManagement" EntitySet="ProjectManagements" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ProjectMan__S_ID__2DE6D218" Association="DBProjectStudentModel.FK__ProjectMan__S_ID__2DE6D218">
+            <End Role="Student" EntitySet="Students" />
+            <End Role="ProjectManagement" EntitySet="ProjectManagements" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="ProjectManagement">
+          <Key>
+            <PropertyRef Name="PM_ID" />
+          </Key>
+          <Property Name="P_ID" Type="Int32" />
+          <Property Name="L_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="S_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="Lecture" Relationship="DBProjectStudentModel.FK__ProjectMan__L_ID__2BFE89A6" FromRole="ProjectManagement" ToRole="Lecture" />
+          <NavigationProperty Name="Project" Relationship="DBProjectStudentModel.FK__ProjectMan__P_ID__2CF2ADDF" FromRole="ProjectManagement" ToRole="Project" />
+          <NavigationProperty Name="Student" Relationship="DBProjectStudentModel.FK__ProjectMan__S_ID__2DE6D218" FromRole="ProjectManagement" ToRole="Student" />
+        </EntityType>
+        <Association Name="FK__ProjectMan__L_ID__2BFE89A6">
+          <End Type="DBProjectStudentModel.Lecture" Role="Lecture" Multiplicity="0..1" />
+          <End Type="DBProjectStudentModel.ProjectManagement" Role="ProjectManagement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Lecture">
+              <PropertyRef Name="L_ID" />
+            </Principal>
+            <Dependent Role="ProjectManagement">
+              <PropertyRef Name="L_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProjectMan__P_ID__2CF2ADDF">
+          <End Type="DBProjectStudentModel.Project" Role="Project" Multiplicity="0..1" />
+          <End Type="DBProjectStudentModel.ProjectManagement" Role="ProjectManagement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="P_ID" />
+            </Principal>
+            <Dependent Role="ProjectManagement">
+              <PropertyRef Name="P_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ProjectMan__S_ID__2DE6D218">
+          <End Type="DBProjectStudentModel.Student" Role="Student" Multiplicity="0..1" />
+          <End Type="DBProjectStudentModel.ProjectManagement" Role="ProjectManagement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Student">
+              <PropertyRef Name="S_ID" />
+            </Principal>
+            <Dependent Role="ProjectManagement">
+              <PropertyRef Name="S_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -250,6 +355,16 @@ error 6004: The table 'DBProjectStudent.dbo.ProjectManagement' is referenced by 
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Pass" ColumnName="Pass" />
                 <ScalarProperty Name="roleuser" ColumnName="roleuser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectManagements">
+            <EntityTypeMapping TypeName="DBProjectStudentModel.ProjectManagement">
+              <MappingFragment StoreEntitySet="ProjectManagement">
+                <ScalarProperty Name="PM_ID" ColumnName="PM_ID" />
+                <ScalarProperty Name="S_ID" ColumnName="S_ID" />
+                <ScalarProperty Name="L_ID" ColumnName="L_ID" />
+                <ScalarProperty Name="P_ID" ColumnName="P_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

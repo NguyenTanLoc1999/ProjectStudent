@@ -41,11 +41,6 @@
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvProject = new System.Windows.Forms.DataGridView();
-            this.cID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cFromtime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cTotime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.listStudentSearch = new System.Windows.Forms.ListBox();
             this.txtStudentSearch = new System.Windows.Forms.TextBox();
@@ -54,6 +49,14 @@
             this.txtPoint = new System.Windows.Forms.TextBox();
             this.cmbLecturerID = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.cID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cFromtime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cTotime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cL_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cL_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cS_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProject)).BeginInit();
             this.SuspendLayout();
             // 
@@ -190,38 +193,16 @@
             this.cTitle,
             this.cDescription,
             this.cFromtime,
-            this.cTotime});
+            this.cTotime,
+            this.cL_ID,
+            this.cL_Name,
+            this.cS_Name});
             this.dgvProject.Location = new System.Drawing.Point(3, 218);
             this.dgvProject.Name = "dgvProject";
             this.dgvProject.RowTemplate.Height = 24;
-            this.dgvProject.Size = new System.Drawing.Size(1570, 405);
+            this.dgvProject.Size = new System.Drawing.Size(1262, 405);
             this.dgvProject.TabIndex = 24;
             this.dgvProject.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProject_CellContentClick);
-            // 
-            // cID
-            // 
-            this.cID.HeaderText = "ID";
-            this.cID.Name = "cID";
-            // 
-            // cTitle
-            // 
-            this.cTitle.HeaderText = "Title";
-            this.cTitle.Name = "cTitle";
-            // 
-            // cDescription
-            // 
-            this.cDescription.HeaderText = "Description";
-            this.cDescription.Name = "cDescription";
-            // 
-            // cFromtime
-            // 
-            this.cFromtime.HeaderText = "From Time";
-            this.cFromtime.Name = "cFromtime";
-            // 
-            // cTotime
-            // 
-            this.cTotime.HeaderText = "To Time";
-            this.cTotime.Name = "cTotime";
             // 
             // label6
             // 
@@ -300,11 +281,51 @@
             this.label8.TabIndex = 37;
             this.label8.Text = "Search ID Lecture";
             // 
+            // cID
+            // 
+            this.cID.HeaderText = "ID";
+            this.cID.Name = "cID";
+            // 
+            // cTitle
+            // 
+            this.cTitle.HeaderText = "Title";
+            this.cTitle.Name = "cTitle";
+            // 
+            // cDescription
+            // 
+            this.cDescription.HeaderText = "Description";
+            this.cDescription.Name = "cDescription";
+            // 
+            // cFromtime
+            // 
+            this.cFromtime.HeaderText = "From Time";
+            this.cFromtime.Name = "cFromtime";
+            // 
+            // cTotime
+            // 
+            this.cTotime.HeaderText = "To Time";
+            this.cTotime.Name = "cTotime";
+            // 
+            // cL_ID
+            // 
+            this.cL_ID.HeaderText = "Lecture ID";
+            this.cL_ID.Name = "cL_ID";
+            // 
+            // cL_Name
+            // 
+            this.cL_Name.HeaderText = "Lecture Name";
+            this.cL_Name.Name = "cL_Name";
+            // 
+            // cS_Name
+            // 
+            this.cS_Name.HeaderText = "Student Name";
+            this.cS_Name.Name = "cS_Name";
+            // 
             // frmProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1171, 635);
+            this.ClientSize = new System.Drawing.Size(1279, 635);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.cmbLecturerID);
             this.Controls.Add(this.txtPoint);
@@ -355,14 +376,17 @@
         private System.Windows.Forms.ListBox listStudentSearch;
         private System.Windows.Forms.TextBox txtStudentSearch;
         private System.Windows.Forms.ListBox listStudents;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtPoint;
+        private System.Windows.Forms.ComboBox cmbLecturerID;
+        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridViewTextBoxColumn cID;
         private System.Windows.Forms.DataGridViewTextBoxColumn cTitle;
         private System.Windows.Forms.DataGridViewTextBoxColumn cDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn cFromtime;
         private System.Windows.Forms.DataGridViewTextBoxColumn cTotime;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtPoint;
-        private System.Windows.Forms.ComboBox cmbLecturerID;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cL_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cL_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cS_Name;
     }
 }

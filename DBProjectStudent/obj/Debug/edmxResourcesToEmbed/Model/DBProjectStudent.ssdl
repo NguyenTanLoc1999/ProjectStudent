@@ -8,10 +8,10 @@
     <Property Name="L_name" Type="nvarchar" MaxLength="100" />
     <Property Name="L_fullname" Type="nvarchar" MaxLength="50" />
     <Property Name="L_department" Type="nvarchar" MaxLength="50" />
+    <Property Name="L_gender" Type="varchar" MaxLength="10" />
     <Property Name="L_birthday" Type="datetime" />
     <Property Name="L_phone" Type="nvarchar" MaxLength="50" />
     <Property Name="L_email" Type="nvarchar" MaxLength="50" />
-    <Property Name="L_gender" Type="varchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="Progress">
     <Key>
@@ -34,7 +34,15 @@
     <Property Name="P_fromtime" Type="datetime" />
     <Property Name="P_totime" Type="datetime" />
     <Property Name="P_point" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="ProjectManagement">
+    <Key>
+      <PropertyRef Name="PM_ID" />
+    </Key>
+    <Property Name="P_ID" Type="int" />
     <Property Name="L_ID" Type="varchar" MaxLength="20" />
+    <Property Name="S_ID" Type="varchar" MaxLength="20" />
+    <Property Name="PM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
   </EntityType>
   <EntityType Name="Student">
     <Key>
@@ -47,7 +55,6 @@
     <Property Name="S_birthday" Type="datetime" />
     <Property Name="S_phone" Type="nvarchar" MaxLength="50" />
     <Property Name="S_email" Type="nvarchar" MaxLength="50" />
-    <Property Name="P_ID" Type="int" />
     <Property Name="S_gender" Type="varchar" MaxLength="10" />
   </EntityType>
   <EntityType Name="UserLogin">
@@ -58,7 +65,7 @@
     <Property Name="Pass" Type="varchar" MaxLength="20" />
     <Property Name="roleuser" Type="varchar" MaxLength="10" />
   </EntityType>
-  <Association Name="FK__Progress__Pro_ID__1DB06A4F">
+  <Association Name="FK__Progress__Pro_ID__32AB8735">
     <End Role="Project" Type="Self.Project" Multiplicity="1" />
     <End Role="Progress" Type="Self.Progress" Multiplicity="0..1" />
     <ReferentialConstraint>
@@ -70,39 +77,39 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Project__L_ID__1AD3FDA4">
+  <Association Name="FK__ProjectMan__L_ID__2BFE89A6">
     <End Role="Lecture" Type="Self.Lecture" Multiplicity="0..1" />
-    <End Role="Project" Type="Self.Project" Multiplicity="*" />
+    <End Role="ProjectManagement" Type="Self.ProjectManagement" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Lecture">
         <PropertyRef Name="L_ID" />
       </Principal>
-      <Dependent Role="Project">
+      <Dependent Role="ProjectManagement">
         <PropertyRef Name="L_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Student__P_ID__208CD6FA">
+  <Association Name="FK__ProjectMan__P_ID__2CF2ADDF">
     <End Role="Project" Type="Self.Project" Multiplicity="0..1" />
-    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <End Role="ProjectManagement" Type="Self.ProjectManagement" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Project">
         <PropertyRef Name="P_ID" />
       </Principal>
-      <Dependent Role="Student">
+      <Dependent Role="ProjectManagement">
         <PropertyRef Name="P_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__UserLogin__ID__245D67DE">
-    <End Role="Student" Type="Self.Student" Multiplicity="1" />
-    <End Role="UserLogin" Type="Self.UserLogin" Multiplicity="0..1" />
+  <Association Name="FK__ProjectMan__S_ID__2DE6D218">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="ProjectManagement" Type="Self.ProjectManagement" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Student">
         <PropertyRef Name="S_ID" />
       </Principal>
-      <Dependent Role="UserLogin">
-        <PropertyRef Name="ID" />
+      <Dependent Role="ProjectManagement">
+        <PropertyRef Name="S_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -110,23 +117,24 @@
     <EntitySet Name="Lecture" EntityType="Self.Lecture" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Progress" EntityType="Self.Progress" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProjectManagement" EntityType="Self.ProjectManagement" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="UserLogin" EntityType="Self.UserLogin" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Progress__Pro_ID__1DB06A4F" Association="Self.FK__Progress__Pro_ID__1DB06A4F">
+    <AssociationSet Name="FK__Progress__Pro_ID__32AB8735" Association="Self.FK__Progress__Pro_ID__32AB8735">
       <End Role="Project" EntitySet="Project" />
       <End Role="Progress" EntitySet="Progress" />
     </AssociationSet>
-    <AssociationSet Name="FK__Project__L_ID__1AD3FDA4" Association="Self.FK__Project__L_ID__1AD3FDA4">
+    <AssociationSet Name="FK__ProjectMan__L_ID__2BFE89A6" Association="Self.FK__ProjectMan__L_ID__2BFE89A6">
       <End Role="Lecture" EntitySet="Lecture" />
-      <End Role="Project" EntitySet="Project" />
+      <End Role="ProjectManagement" EntitySet="ProjectManagement" />
     </AssociationSet>
-    <AssociationSet Name="FK__Student__P_ID__208CD6FA" Association="Self.FK__Student__P_ID__208CD6FA">
+    <AssociationSet Name="FK__ProjectMan__P_ID__2CF2ADDF" Association="Self.FK__ProjectMan__P_ID__2CF2ADDF">
       <End Role="Project" EntitySet="Project" />
-      <End Role="Student" EntitySet="Student" />
+      <End Role="ProjectManagement" EntitySet="ProjectManagement" />
     </AssociationSet>
-    <AssociationSet Name="FK__UserLogin__ID__245D67DE" Association="Self.FK__UserLogin__ID__245D67DE">
+    <AssociationSet Name="FK__ProjectMan__S_ID__2DE6D218" Association="Self.FK__ProjectMan__S_ID__2DE6D218">
       <End Role="Student" EntitySet="Student" />
-      <End Role="UserLogin" EntitySet="UserLogin" />
+      <End Role="ProjectManagement" EntitySet="ProjectManagement" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
