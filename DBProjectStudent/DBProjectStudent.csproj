@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\LectureController.cs" />
+    <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\ProjectController.cs" />
     <Compile Include="Controller\StudentController.cs" />
     <Compile Include="Model\DBProjectStudent.Context.cs">
