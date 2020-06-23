@@ -102,7 +102,7 @@ namespace DBProjectStudent.View
                 rowSelected.P_description = dgvProject.SelectedRows[0].Cells[2].Value.ToString();
                 rowSelected.P_fromtime = DateTime.Parse(dgvProject.SelectedRows[0].Cells[3].Value.ToString());
                 rowSelected.P_totime = DateTime.Parse(dgvProject.SelectedRows[0].Cells[4].Value.ToString());
-                rowSelected.P_point = int.Parse(dgvProject.SelectedRows[0].Cells[4].Value.ToString());
+                rowSelected.P_point = dgvProject.SelectedRows[0].Cells[4].Value.ToString();
                 //rowSelected.images = dgvProduct.SelectedRows[0].Cells["Images"].Value.ToString();
                 //rowSelected.price = dgvProject.SelectedRows[0].Cells["Price"].Value.ToString();
                 //rowSelected.idTypePro = int.Parse(dgvProduct.SelectedRows[0].Cells["TypeProduct"].Value.ToString());

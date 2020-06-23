@@ -25,12 +25,12 @@ namespace DBProjectStudent.Model
         public string P_description { get; set; }
         public Nullable<System.DateTime> P_fromtime { get; set; }
         public Nullable<System.DateTime> P_totime { get; set; }
-        public Nullable<int> P_point { get; set; }
+        public string P_point { get; set; }
         public string L_ID { get; set; }
     
         public virtual Lecture Lecture { get; set; }
+        public virtual Progress Progress { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Student> Students { get; set; }
-        public virtual Progress Progress { get; set; }
     }
 }

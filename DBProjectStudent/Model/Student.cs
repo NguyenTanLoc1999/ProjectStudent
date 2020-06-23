@@ -26,10 +26,5 @@ namespace DBProjectStudent.Model
     
         public virtual Project Project { get; set; }
         public virtual UserLogin UserLogin { get; set; }
-
-        public override string ToString()
-        {
-            return this.S_fullname;
-        }
     }
 }

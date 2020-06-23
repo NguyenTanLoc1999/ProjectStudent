@@ -2,25 +2,25 @@
 <Schema Namespace="DBProjectStudentModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="DBProjectStudentEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Lectures" EntityType="DBProjectStudentModel.Lecture" />
-    <EntitySet Name="Projects" EntityType="DBProjectStudentModel.Project" />
-    <EntitySet Name="Students" EntityType="DBProjectStudentModel.Student" />
     <EntitySet Name="UserLogins" EntityType="DBProjectStudentModel.UserLogin" />
-    <AssociationSet Name="FK__Project__L_ID__778AC167" Association="DBProjectStudentModel.FK__Project__L_ID__778AC167">
+    <EntitySet Name="Progresses" EntityType="DBProjectStudentModel.Progress" />
+    <EntitySet Name="Projects" EntityType="DBProjectStudentModel.Project" />
+    <AssociationSet Name="FK__Project__L_ID__1AD3FDA4" Association="DBProjectStudentModel.FK__Project__L_ID__1AD3FDA4">
       <End Role="Lecture" EntitySet="Lectures" />
       <End Role="Project" EntitySet="Projects" />
     </AssociationSet>
-    <AssociationSet Name="FK__Student__P_ID__7A672E12" Association="DBProjectStudentModel.FK__Student__P_ID__7A672E12">
-      <End Role="Project" EntitySet="Projects" />
-      <End Role="Student" EntitySet="Students" />
-    </AssociationSet>
-    <AssociationSet Name="FK__UserLogin__ID__7D439ABD" Association="DBProjectStudentModel.FK__UserLogin__ID__7D439ABD">
-      <End Role="Student" EntitySet="Students" />
-      <End Role="UserLogin" EntitySet="UserLogins" />
-    </AssociationSet>
-    <EntitySet Name="Progresses" EntityType="DBProjectStudentModel.Progress" />
-    <AssociationSet Name="FK__Progress__Pro_ID__02084FDA" Association="DBProjectStudentModel.FK__Progress__Pro_ID__02084FDA">
+    <AssociationSet Name="FK__Progress__Pro_ID__1DB06A4F" Association="DBProjectStudentModel.FK__Progress__Pro_ID__1DB06A4F">
       <End Role="Project" EntitySet="Projects" />
       <End Role="Progress" EntitySet="Progresses" />
+    </AssociationSet>
+    <EntitySet Name="Students" EntityType="DBProjectStudentModel.Student" />
+    <AssociationSet Name="FK__Student__P_ID__208CD6FA" Association="DBProjectStudentModel.FK__Student__P_ID__208CD6FA">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="Student" EntitySet="Students" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UserLogin__ID__245D67DE" Association="DBProjectStudentModel.FK__UserLogin__ID__245D67DE">
+      <End Role="Student" EntitySet="Students" />
+      <End Role="UserLogin" EntitySet="UserLogins" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="Lecture">
@@ -35,7 +35,28 @@
     <Property Name="L_phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="L_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="L_gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Projects" Relationship="DBProjectStudentModel.FK__Project__L_ID__778AC167" FromRole="Lecture" ToRole="Project" />
+    <NavigationProperty Name="Projects" Relationship="DBProjectStudentModel.FK__Project__L_ID__1AD3FDA4" FromRole="Lecture" ToRole="Project" />
+  </EntityType>
+  <EntityType Name="UserLogin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Pass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="roleuser" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Student" Relationship="DBProjectStudentModel.FK__UserLogin__ID__245D67DE" FromRole="UserLogin" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Progress">
+    <Key>
+      <PropertyRef Name="Pro_ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Pro_ID" Type="Int32" Nullable="false" />
+    <Property Name="ProgressName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="StudentName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LinkSource" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Note" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Project" Relationship="DBProjectStudentModel.FK__Progress__Pro_ID__1DB06A4F" FromRole="Progress" ToRole="Project" />
   </EntityType>
   <EntityType Name="Project">
     <Key>
@@ -46,12 +67,36 @@
     <Property Name="P_description" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="P_fromtime" Type="DateTime" Precision="3" />
     <Property Name="P_totime" Type="DateTime" Precision="3" />
-    <Property Name="P_point" Type="Int32" />
+    <Property Name="P_point" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
     <Property Name="L_ID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Lecture" Relationship="DBProjectStudentModel.FK__Project__L_ID__778AC167" FromRole="Project" ToRole="Lecture" />
-    <NavigationProperty Name="Students" Relationship="DBProjectStudentModel.FK__Student__P_ID__7A672E12" FromRole="Project" ToRole="Student" />
-    <NavigationProperty Name="Progress" Relationship="DBProjectStudentModel.FK__Progress__Pro_ID__02084FDA" FromRole="Project" ToRole="Progress" />
+    <NavigationProperty Name="Lecture" Relationship="DBProjectStudentModel.FK__Project__L_ID__1AD3FDA4" FromRole="Project" ToRole="Lecture" />
+    <NavigationProperty Name="Progress" Relationship="DBProjectStudentModel.FK__Progress__Pro_ID__1DB06A4F" FromRole="Project" ToRole="Progress" />
+    <NavigationProperty Name="Students" Relationship="DBProjectStudentModel.FK__Student__P_ID__208CD6FA" FromRole="Project" ToRole="Student" />
   </EntityType>
+  <Association Name="FK__Project__L_ID__1AD3FDA4">
+    <End Type="DBProjectStudentModel.Lecture" Role="Lecture" Multiplicity="0..1" />
+    <End Type="DBProjectStudentModel.Project" Role="Project" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Lecture">
+        <PropertyRef Name="L_ID" />
+      </Principal>
+      <Dependent Role="Project">
+        <PropertyRef Name="L_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Progress__Pro_ID__1DB06A4F">
+    <End Type="DBProjectStudentModel.Project" Role="Project" Multiplicity="1" />
+    <End Type="DBProjectStudentModel.Progress" Role="Progress" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="P_ID" />
+      </Principal>
+      <Dependent Role="Progress">
+        <PropertyRef Name="Pro_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityType Name="Student">
     <Key>
       <PropertyRef Name="S_ID" />
@@ -65,31 +110,10 @@
     <Property Name="S_email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="P_ID" Type="Int32" />
     <Property Name="S_gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Project" Relationship="DBProjectStudentModel.FK__Student__P_ID__7A672E12" FromRole="Student" ToRole="Project" />
-    <NavigationProperty Name="UserLogin" Relationship="DBProjectStudentModel.FK__UserLogin__ID__7D439ABD" FromRole="Student" ToRole="UserLogin" />
+    <NavigationProperty Name="Project" Relationship="DBProjectStudentModel.FK__Student__P_ID__208CD6FA" FromRole="Student" ToRole="Project" />
+    <NavigationProperty Name="UserLogin" Relationship="DBProjectStudentModel.FK__UserLogin__ID__245D67DE" FromRole="Student" ToRole="UserLogin" />
   </EntityType>
-  <EntityType Name="UserLogin">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="Pass" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="roleuser" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Student" Relationship="DBProjectStudentModel.FK__UserLogin__ID__7D439ABD" FromRole="UserLogin" ToRole="Student" />
-  </EntityType>
-  <Association Name="FK__Project__L_ID__778AC167">
-    <End Type="DBProjectStudentModel.Lecture" Role="Lecture" Multiplicity="0..1" />
-    <End Type="DBProjectStudentModel.Project" Role="Project" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Lecture">
-        <PropertyRef Name="L_ID" />
-      </Principal>
-      <Dependent Role="Project">
-        <PropertyRef Name="L_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Student__P_ID__7A672E12">
+  <Association Name="FK__Student__P_ID__208CD6FA">
     <End Type="DBProjectStudentModel.Project" Role="Project" Multiplicity="0..1" />
     <End Type="DBProjectStudentModel.Student" Role="Student" Multiplicity="*" />
     <ReferentialConstraint>
@@ -101,7 +125,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__UserLogin__ID__7D439ABD">
+  <Association Name="FK__UserLogin__ID__245D67DE">
     <End Type="DBProjectStudentModel.Student" Role="Student" Multiplicity="1" />
     <End Type="DBProjectStudentModel.UserLogin" Role="UserLogin" Multiplicity="0..1" />
     <ReferentialConstraint>
@@ -110,30 +134,6 @@
       </Principal>
       <Dependent Role="UserLogin">
         <PropertyRef Name="ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <EntityType Name="Progress">
-    <Key>
-      <PropertyRef Name="Pro_ID" />
-    </Key>
-    <Property Name="Pro_ID" Type="Int32" Nullable="false" />
-    <Property Name="Progress1" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Progress2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Progress3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="Progress4" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="LinkSource" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="Project" Relationship="DBProjectStudentModel.FK__Progress__Pro_ID__02084FDA" FromRole="Progress" ToRole="Project" />
-  </EntityType>
-  <Association Name="FK__Progress__Pro_ID__02084FDA">
-    <End Type="DBProjectStudentModel.Project" Role="Project" Multiplicity="1" />
-    <End Type="DBProjectStudentModel.Progress" Role="Progress" Multiplicity="0..1" />
-    <ReferentialConstraint>
-      <Principal Role="Project">
-        <PropertyRef Name="P_ID" />
-      </Principal>
-      <Dependent Role="Progress">
-        <PropertyRef Name="Pro_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

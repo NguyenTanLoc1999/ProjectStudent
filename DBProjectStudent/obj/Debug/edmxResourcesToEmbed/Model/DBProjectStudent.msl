@@ -15,6 +15,27 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="UserLogins">
+      <EntityTypeMapping TypeName="DBProjectStudentModel.UserLogin">
+        <MappingFragment StoreEntitySet="UserLogin">
+          <ScalarProperty Name="roleuser" ColumnName="roleuser" />
+          <ScalarProperty Name="Pass" ColumnName="Pass" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Progresses">
+      <EntityTypeMapping TypeName="DBProjectStudentModel.Progress">
+        <MappingFragment StoreEntitySet="Progress">
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="LinkSource" ColumnName="LinkSource" />
+          <ScalarProperty Name="StudentName" ColumnName="StudentName" />
+          <ScalarProperty Name="ProgressName" ColumnName="ProgressName" />
+          <ScalarProperty Name="Pro_ID" ColumnName="Pro_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Projects">
       <EntityTypeMapping TypeName="DBProjectStudentModel.Project">
         <MappingFragment StoreEntitySet="Project">
@@ -40,27 +61,6 @@
           <ScalarProperty Name="S_fullname" ColumnName="S_fullname" />
           <ScalarProperty Name="S_name" ColumnName="S_name" />
           <ScalarProperty Name="S_ID" ColumnName="S_ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="UserLogins">
-      <EntityTypeMapping TypeName="DBProjectStudentModel.UserLogin">
-        <MappingFragment StoreEntitySet="UserLogin">
-          <ScalarProperty Name="roleuser" ColumnName="roleuser" />
-          <ScalarProperty Name="Pass" ColumnName="Pass" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Progresses">
-      <EntityTypeMapping TypeName="DBProjectStudentModel.Progress">
-        <MappingFragment StoreEntitySet="Progress">
-          <ScalarProperty Name="LinkSource" ColumnName="LinkSource" />
-          <ScalarProperty Name="Progress4" ColumnName="Progress4" />
-          <ScalarProperty Name="Progress3" ColumnName="Progress3" />
-          <ScalarProperty Name="Progress2" ColumnName="Progress2" />
-          <ScalarProperty Name="Progress1" ColumnName="Progress1" />
-          <ScalarProperty Name="Pro_ID" ColumnName="Pro_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
