@@ -98,5 +98,38 @@ namespace DBProjectStudent.Controller
                 return students.ToList();
             }
         }
+        public static bool DeleteStudent(string idStudent)
+        {
+            using (var _context = new DBProjectStudentEntities())
+            {
+                var Student = (from x in _context.Students
+                               where x.S_ID == idStudent
+                               select x).Single();
+
+                _context.Students.Remove(Student);
+                _context.SaveChanges();
+                return true;
+            }
+        }
+
+        public static bool UpdateStudent(Student studentadd)
+        {
+            using (var _context = new DBProjectStudentEntities())
+            {
+                var student = (from s in _context.Students
+                               where s.S_ID == studentadd.S_ID
+                               select s).SingleOrDefault();
+                student.S_name = studentadd.S_name;
+                student.S_fullname = studentadd.S_fullname;
+                student.S_major = studentadd.S_major;
+                student.S_gender = studentadd.S_gender;
+                student.S_birthday = studentadd.S_birthday;
+                student.S_phone = studentadd.S_phone;
+                student.S_email = studentadd.S_email;
+                //_context.Users.AddOrUpdate(user);
+                _context.SaveChanges();
+                return true;
+            }
+        }
     }
 }

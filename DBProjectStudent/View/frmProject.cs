@@ -166,8 +166,8 @@ namespace DBProjectStudent.View
             {
                 return;
             }
-            int projectname = int.Parse(this.dgvProject.SelectedRows[0].Cells[0].Value.ToString().Trim());
-            if (ProjectController.DeleteProject(projectname) == false)
+            int projectid = int.Parse(this.dgvProject.SelectedRows[0].Cells[0].Value.ToString().Trim());
+            if (ProjectController.DeleteProject(projectid) == false)
             {
                 MessageBox.Show("Cannot delete project!!!");
             }

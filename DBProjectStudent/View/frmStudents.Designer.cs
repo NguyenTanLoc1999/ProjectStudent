@@ -55,6 +55,7 @@
             this.cBirthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnUpdate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,19 +82,20 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(300, 156);
+            this.btnDelete.Location = new System.Drawing.Point(478, 156);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(130, 41);
+            this.btnDelete.Size = new System.Drawing.Size(164, 41);
             this.btnDelete.TabIndex = 25;
             this.btnDelete.Text = "Delete Student";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.Location = new System.Drawing.Point(127, 156);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(130, 41);
+            this.btnAdd.Size = new System.Drawing.Size(145, 41);
             this.btnAdd.TabIndex = 24;
             this.btnAdd.Text = "Add Student";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -245,8 +247,9 @@
             this.dgvStudent.Location = new System.Drawing.Point(0, 212);
             this.dgvStudent.Name = "dgvStudent";
             this.dgvStudent.RowTemplate.Height = 24;
-            this.dgvStudent.Size = new System.Drawing.Size(882, 241);
+            this.dgvStudent.Size = new System.Drawing.Size(1151, 241);
             this.dgvStudent.TabIndex = 39;
+            this.dgvStudent.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudent_CellClick);
             // 
             // cID
             // 
@@ -288,12 +291,24 @@
             this.cEmail.HeaderText = "Email";
             this.cEmail.Name = "cEmail";
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Location = new System.Drawing.Point(291, 156);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(167, 41);
+            this.btnUpdate.TabIndex = 40;
+            this.btnUpdate.Text = "Update Student";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // frmStudents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(882, 453);
+            this.ClientSize = new System.Drawing.Size(1151, 453);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.dgvStudent);
             this.Controls.Add(this.cmbGender);
             this.Controls.Add(this.cmbMajor);
@@ -353,5 +368,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cBirthday;
         private System.Windows.Forms.DataGridViewTextBoxColumn cPhone;
         private System.Windows.Forms.DataGridViewTextBoxColumn cEmail;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }
