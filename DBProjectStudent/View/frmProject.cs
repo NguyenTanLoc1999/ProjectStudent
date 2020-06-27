@@ -58,7 +58,7 @@ namespace DBProjectStudent.View
             Project project = new Project();
             project.P_ID = ProjectController.getIDfromDB();
             project.P_title = this.txtTitle.Text.Trim();
-            project.P_description = this.txtTitle.Text.Trim();
+            project.P_description = this.txtDescription.Text.Trim();
             project.P_fromtime = this.dateTimeFrom.Value;
             project.P_totime = this.dateTimeTo.Value;
             project.P_point =this.txtPoint.Text.Trim();
@@ -98,30 +98,15 @@ namespace DBProjectStudent.View
         {
             if (e.RowIndex >= 0)  // chac chan phai chon 1 hang
             {
-                rowSelected = new Project();
-                //rowSelected.P_ID = int.Parse(dgvProject.SelectedRows[0].Cells["ID"].Value.ToString());
-                rowSelected.P_title = dgvProject.SelectedRows[0].Cells["Title"].Value.ToString();
-                rowSelected.P_description = dgvProject.SelectedRows[0].Cells["Description"].Value.ToString();
-                rowSelected.P_fromtime = DateTime.Parse(dgvProject.SelectedRows[0].Cells["From Time"].Value.ToString());
-                rowSelected.P_totime = DateTime.Parse(dgvProject.SelectedRows[0].Cells["To Time"].Value.ToString());
-                rowSelected.P_point = dgvProject.SelectedRows[0].Cells[4].Value.ToString();
-                //rowSelected.images = dgvProduct.SelectedRows[0].Cells["Images"].Value.ToString();
-                //rowSelected.price = dgvProject.SelectedRows[0].Cells["Price"].Value.ToString();
-                //rowSelected.idTypePro = int.Parse(dgvProduct.SelectedRows[0].Cells["TypeProduct"].Value.ToString());
+                DataGridViewRow row = this.dgvProject.Rows[e.RowIndex];
 
+                txtTitle.Text = row.Cells[1].Value.ToString();
+                txtDescription.Text = row.Cells[2].Value.ToString();
+                dateTimeFrom.Text = row.Cells[3].Value.ToString();
+                dateTimeTo.Text = row.Cells[4].Value.ToString();
+                txtPoint.Text = row.Cells[5].Value.ToString();
+                cmbLecturerID.Text = row.Cells[6].Value.ToString();
 
-
-                // hien thi lai tren textbox
-                txtTitle.Text = rowSelected.P_title;
-                txtDescription.Text = rowSelected.P_description;
-                dateTimeFrom.Text = rowSelected.P_fromtime.ToString();
-                dateTimeTo.Text = rowSelected.P_totime.ToString();
-                txtPoint.Text = rowSelected.P_point.ToString();
-
-                //int indexGender = listgender.FindIndex(s => s == rowSelected.gender);
-                //cmbGender.SelectedIndex = indexGender;
-
-                //cmbTypePro.SelectedIndex = listTypePro.FindIndex(f => f.id == rowSelected.idTypePro);
             }
         }
 
@@ -170,52 +155,6 @@ namespace DBProjectStudent.View
             }
         }
 
-        //private void txtLectureSearch_TextChanged(object sender, EventArgs e)
-        //{
-        //    List<Lecture> searchlecture = LectureController.getAllLecture(this.txtLectureSearch.Text.Trim());
-        //    if (searchlecture.Count >= 0)
-        //    {
-        //        this.listLectureSearch.Visible = true;
-        //    }
-        //    else
-        //    {
-        //        this.listLectureSearch.Visible = false;
-        //    }
-        //    //show to the list box
-        //    this.listLectureSearch.Items.Clear();
-        //    for (int i = 0; i < searchlecture.Count; i++)
-        //    {
-        //        this.listLectureSearch.Items.Add(searchlecture[i]);
-        //    }
-        //    if (txtLectureSearch.Text == "")
-        //        this.listLectureSearch.Items.Clear();
-        //}
-
-        //private void listLectureSearch_DoubleClick(object sender, EventArgs e)
-        //{
-        //    //test DemoBranch
-        //    Lecture lecture = (Lecture)this.listLectureSearch.SelectedItem;
-        //    // check repeat user
-        //    for (int i = 0; i < this.listLecture.Items.Count; i++)
-        //    {
-        //        if (((Lecture)this.listLecture.Items[i]).L_fullname == lecture.L_fullname)
-        //        {
-        //            MessageBox.Show("Lecture name is exist!!");
-        //            return;
-        //        }
-        //    }
-        //    this.listLecture.Items.Add(lecture);
-        //    this.listLectureSearch.Visible = false;
-        //}
-
-        //private void listLecture_DoubleClick(object sender, EventArgs e)
-        //{
-        //    if (this.listLecture.SelectedIndex >= 0)
-        //    {
-        //        this.listLecture.Items.RemoveAt(this.listLecture.SelectedIndex);
-        //    }
-        //}
-
         private void listStudentSearch_SelectedIndexChanged(object sender, EventArgs e)
         {
 
@@ -235,6 +174,59 @@ namespace DBProjectStudent.View
             else
             {
                 MessageBox.Show("Delete success!!!", "Note", MessageBoxButtons.OK);
+                BindingSource source = new BindingSource();
+                source.DataSource = ProjectController.getAllProject();
+                this.dgvProject.DataSource = source;
+            }
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            Project project = new Project();          
+
+            project.P_ID = int.Parse(this.dgvProject.CurrentRow.Cells[0].Value.ToString());
+            if (project.P_ID <= 0)
+                return;
+
+            if (this.dgvProject.CurrentRow.Cells[1].Value is null)
+            {
+                this.dgvProject.CurrentRow.Cells[1].Value = "";
+
+            }
+            project.P_title = this.txtTitle.Text.Trim();
+
+            if (this.dgvProject.CurrentRow.Cells[2].Value is null)
+            {
+                this.dgvProject.CurrentRow.Cells[2].Value = "";
+            }
+            project.P_description = this.txtDescription.Text.Trim();
+            if (this.dgvProject.CurrentRow.Cells[3].Value is null)
+            {
+                this.dgvProject.CurrentRow.Cells[3].Value = "";
+            }
+            project.P_fromtime = this.dateTimeFrom.Value;
+            if (this.dgvProject.CurrentRow.Cells[4].Value is null)
+            {
+                this.dgvProject.CurrentRow.Cells[4].Value = "";
+            }
+            project.P_totime = this.dateTimeTo.Value;
+            if (this.dgvProject.CurrentRow.Cells[5].Value is null)
+            {
+                this.dgvProject.CurrentRow.Cells[5].Value = "";
+            }
+            project.P_point = this.txtPoint.Text.Trim();
+            if (this.dgvProject.CurrentRow.Cells[6].Value is null)
+            {
+                this.dgvProject.CurrentRow.Cells[6].Value = "";
+            }
+            project.L_ID = this.cmbLecturerID.Text.Trim();
+            if (ProjectController.UpdateProject(project) == false)
+            {
+                MessageBox.Show("Cannot update!!!");
+            }
+            else
+            {
+                MessageBox.Show("Update success", "Note", MessageBoxButtons.OK);
                 BindingSource source = new BindingSource();
                 source.DataSource = ProjectController.getAllProject();
                 this.dgvProject.DataSource = source;

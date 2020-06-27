@@ -41,6 +41,11 @@
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvProject = new System.Windows.Forms.DataGridView();
+            this.cID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cFromtime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cTotime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.listStudentSearch = new System.Windows.Forms.ListBox();
             this.txtStudentSearch = new System.Windows.Forms.TextBox();
@@ -49,11 +54,6 @@
             this.txtPoint = new System.Windows.Forms.TextBox();
             this.cmbLecturerID = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.cID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cTitle = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cFromtime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cTotime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProject)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,6 +87,7 @@
             this.btnUpdate.TabIndex = 21;
             this.btnUpdate.Text = "Update Project";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // btnSaveProject
             // 
@@ -198,6 +199,31 @@
             this.dgvProject.TabIndex = 24;
             this.dgvProject.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProject_CellContentClick);
             // 
+            // cID
+            // 
+            this.cID.HeaderText = "ID";
+            this.cID.Name = "cID";
+            // 
+            // cTitle
+            // 
+            this.cTitle.HeaderText = "Title";
+            this.cTitle.Name = "cTitle";
+            // 
+            // cDescription
+            // 
+            this.cDescription.HeaderText = "Description";
+            this.cDescription.Name = "cDescription";
+            // 
+            // cFromtime
+            // 
+            this.cFromtime.HeaderText = "From Time";
+            this.cFromtime.Name = "cFromtime";
+            // 
+            // cTotime
+            // 
+            this.cTotime.HeaderText = "To Time";
+            this.cTotime.Name = "cTotime";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -274,31 +300,6 @@
             this.label8.Size = new System.Drawing.Size(146, 20);
             this.label8.TabIndex = 37;
             this.label8.Text = "Search ID Lecture";
-            // 
-            // cID
-            // 
-            this.cID.HeaderText = "ID";
-            this.cID.Name = "cID";
-            // 
-            // cTitle
-            // 
-            this.cTitle.HeaderText = "Title";
-            this.cTitle.Name = "cTitle";
-            // 
-            // cDescription
-            // 
-            this.cDescription.HeaderText = "Description";
-            this.cDescription.Name = "cDescription";
-            // 
-            // cFromtime
-            // 
-            this.cFromtime.HeaderText = "From Time";
-            this.cFromtime.Name = "cFromtime";
-            // 
-            // cTotime
-            // 
-            this.cTotime.HeaderText = "To Time";
-            this.cTotime.Name = "cTotime";
             // 
             // frmProject
             // 

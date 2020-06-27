@@ -83,5 +83,23 @@ namespace ProjectStudent.Controller
                 return true;
             }
         }
+        public static bool UpdateProject(Project projectadd)
+        {
+            using (var _context = new DBProjectStudentEntities())
+            {
+                var project = (from u in _context.Projects
+                            where u.P_ID == projectadd.P_ID
+                               select u).SingleOrDefault();
+                project.P_title = projectadd.P_title;
+                project.P_description = projectadd.P_description;
+                project.P_fromtime = projectadd.P_fromtime;
+                project.P_totime = projectadd.P_totime;
+                project.P_point = projectadd.P_point;
+                project.L_ID = projectadd.L_ID;
+                //_context.Projects.Add(project);
+                _context.SaveChanges();
+                return true;
+            }
+        }
     }
 }
