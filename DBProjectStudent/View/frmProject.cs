@@ -100,10 +100,10 @@ namespace DBProjectStudent.View
             {
                 rowSelected = new Project();
                 //rowSelected.P_ID = int.Parse(dgvProject.SelectedRows[0].Cells["ID"].Value.ToString());
-                rowSelected.P_title = dgvProject.SelectedRows[0].Cells[1].Value.ToString();
-                rowSelected.P_description = dgvProject.SelectedRows[0].Cells[2].Value.ToString();
-                rowSelected.P_fromtime = DateTime.Parse(dgvProject.SelectedRows[0].Cells[3].Value.ToString());
-                rowSelected.P_totime = DateTime.Parse(dgvProject.SelectedRows[0].Cells[4].Value.ToString());
+                rowSelected.P_title = dgvProject.SelectedRows[0].Cells["Title"].Value.ToString();
+                rowSelected.P_description = dgvProject.SelectedRows[0].Cells["Description"].Value.ToString();
+                rowSelected.P_fromtime = DateTime.Parse(dgvProject.SelectedRows[0].Cells["From Time"].Value.ToString());
+                rowSelected.P_totime = DateTime.Parse(dgvProject.SelectedRows[0].Cells["To Time"].Value.ToString());
                 rowSelected.P_point = dgvProject.SelectedRows[0].Cells[4].Value.ToString();
                 //rowSelected.images = dgvProduct.SelectedRows[0].Cells["Images"].Value.ToString();
                 //rowSelected.price = dgvProject.SelectedRows[0].Cells["Price"].Value.ToString();
