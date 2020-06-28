@@ -31,10 +31,5 @@ namespace DBProjectStudent.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ProjectManagement> ProjectManagements { get; set; }
-
-        public override string ToString()
-        {
-            return this.S_fullname;
-        }
     }
 }
