@@ -131,5 +131,13 @@ namespace DBProjectStudent.Controller
                 return true;
             }
         }
+        public static List<Student> getStudentDetail()
+        {
+            using (var _context = new DBProjectStudentEntities())
+            {
+                var student =  _context.Students.ToList();
+                return student;
+            }
+        }
     }
 }

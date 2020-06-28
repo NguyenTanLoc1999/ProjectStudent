@@ -16,9 +16,9 @@ namespace DBProjectStudent.View
         frmProject ProjectForm;
         frmLecture LectureForm;
         frmStudents StudentForm;
-        List<Project> listProject;
-        List<Lecture> listLecture;
-        List<Student> listStudent;
+        //List<Project> listProject;
+        //List<Lecture> listLecture;
+        //List<Student> listStudent;
         public frmMainMDI()
         {
             InitializeComponent();

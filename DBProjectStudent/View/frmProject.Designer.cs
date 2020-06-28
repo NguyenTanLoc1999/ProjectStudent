@@ -46,10 +46,6 @@
             this.cDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cFromtime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cTotime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label6 = new System.Windows.Forms.Label();
-            this.listStudentSearch = new System.Windows.Forms.ListBox();
-            this.txtStudentSearch = new System.Windows.Forms.TextBox();
-            this.listStudents = new System.Windows.Forms.ListBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtPoint = new System.Windows.Forms.TextBox();
             this.cmbLecturerID = new System.Windows.Forms.ComboBox();
@@ -207,66 +203,31 @@
             // 
             this.cID.HeaderText = "ID";
             this.cID.Name = "cID";
+            this.cID.ReadOnly = true;
             // 
             // cTitle
             // 
             this.cTitle.HeaderText = "Title";
             this.cTitle.Name = "cTitle";
+            this.cTitle.ReadOnly = true;
             // 
             // cDescription
             // 
             this.cDescription.HeaderText = "Description";
             this.cDescription.Name = "cDescription";
+            this.cDescription.ReadOnly = true;
             // 
             // cFromtime
             // 
             this.cFromtime.HeaderText = "From Time";
             this.cFromtime.Name = "cFromtime";
+            this.cFromtime.ReadOnly = true;
             // 
             // cTotime
             // 
             this.cTotime.HeaderText = "To Time";
             this.cTotime.Name = "cTotime";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(946, 27);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(173, 20);
-            this.label6.TabIndex = 28;
-            this.label6.Text = "Search Student Name";
-            // 
-            // listStudentSearch
-            // 
-            this.listStudentSearch.FormattingEnabled = true;
-            this.listStudentSearch.ItemHeight = 20;
-            this.listStudentSearch.Location = new System.Drawing.Point(1126, 74);
-            this.listStudentSearch.Name = "listStudentSearch";
-            this.listStudentSearch.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listStudentSearch.Size = new System.Drawing.Size(120, 84);
-            this.listStudentSearch.TabIndex = 27;
-            this.listStudentSearch.SelectedIndexChanged += new System.EventHandler(this.listStudentSearch_SelectedIndexChanged);
-            this.listStudentSearch.DoubleClick += new System.EventHandler(this.listStudentSearch_DoubleClick);
-            // 
-            // txtStudentSearch
-            // 
-            this.txtStudentSearch.Location = new System.Drawing.Point(1125, 22);
-            this.txtStudentSearch.Name = "txtStudentSearch";
-            this.txtStudentSearch.Size = new System.Drawing.Size(120, 27);
-            this.txtStudentSearch.TabIndex = 26;
-            this.txtStudentSearch.TextChanged += new System.EventHandler(this.txtStudentSearch_TextChanged);
-            // 
-            // listStudents
-            // 
-            this.listStudents.FormattingEnabled = true;
-            this.listStudents.ItemHeight = 20;
-            this.listStudents.Location = new System.Drawing.Point(999, 74);
-            this.listStudents.Name = "listStudents";
-            this.listStudents.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.listStudents.Size = new System.Drawing.Size(120, 84);
-            this.listStudents.TabIndex = 25;
-            this.listStudents.DoubleClick += new System.EventHandler(this.listStudents_DoubleClick);
+            this.cTotime.ReadOnly = true;
             // 
             // label9
             // 
@@ -314,10 +275,6 @@
             this.Controls.Add(this.cmbLecturerID);
             this.Controls.Add(this.txtPoint);
             this.Controls.Add(this.label9);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.listStudentSearch);
-            this.Controls.Add(this.txtStudentSearch);
-            this.Controls.Add(this.listStudents);
             this.Controls.Add(this.dgvProject);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnDelete);
@@ -355,10 +312,6 @@
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvProject;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ListBox listStudentSearch;
-        private System.Windows.Forms.TextBox txtStudentSearch;
-        private System.Windows.Forms.ListBox listStudents;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtPoint;
         private System.Windows.Forms.ComboBox cmbLecturerID;

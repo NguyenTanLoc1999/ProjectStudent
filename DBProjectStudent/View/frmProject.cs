@@ -31,7 +31,7 @@ namespace DBProjectStudent.View
             }
             return lectures;
         }
-        Project rowSelected;
+        //Project rowSelected;
         public frmProject()
         {
             
@@ -112,50 +112,7 @@ namespace DBProjectStudent.View
             }
         }
 
-        private void txtStudentSearch_TextChanged(object sender, EventArgs e)
-        {
-            List<Student> searchStudent = StudentController.getAllStudent(this.txtStudentSearch.Text.Trim());
-            if (searchStudent.Count >= 0)
-            {
-                this.listStudentSearch.Visible = true;
-            }
-            else
-            {
-                this.listStudentSearch.Visible = false;
-            }
-            //show to the list box
-            this.listStudentSearch.Items.Clear();
-            for (int i = 0; i < searchStudent.Count; i++)
-            {
-                this.listStudentSearch.Items.Add(searchStudent[i]);
-            } 
-            if (txtStudentSearch.Text == "")
-                this.listStudentSearch.Items.Clear();
-        }
-
-        private void listStudentSearch_DoubleClick(object sender, EventArgs e)
-        {
-            Student student = (Student)this.listStudentSearch.SelectedItem;
-            // check repeat user
-            for (int i = 0; i < this.listStudents.Items.Count; i++)
-            {
-                if (((Student)this.listStudents.Items[i]).S_ID == student.S_ID)
-                {
-                    MessageBox.Show("Student name is exist!!");
-                    return;
-                }
-            }
-            this.listStudents.Items.Add(student);
-            this.listStudentSearch.Visible = false;
-        }
-
-        private void listStudents_DoubleClick(object sender, EventArgs e)
-        {
-            if (this.listStudents.SelectedIndex >= 0)
-            {
-                this.listStudents.Items.RemoveAt(this.listStudents.SelectedIndex);
-            }
-        }
+        
 
         private void listStudentSearch_SelectedIndexChanged(object sender, EventArgs e)
         {

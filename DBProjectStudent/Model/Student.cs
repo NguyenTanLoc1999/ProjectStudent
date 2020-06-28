@@ -36,5 +36,10 @@ namespace DBProjectStudent.Model
         public virtual ICollection<ProjectManagement> ProjectManagements { get; set; }
         [System.ComponentModel.Browsable(false)]
         public virtual UserLogin UserLogin { get; set; }
+
+        public override string ToString()
+        {
+            return this.S_fullname;
+        }
     }
 }

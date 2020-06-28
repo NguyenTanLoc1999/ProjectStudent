@@ -64,6 +64,7 @@
     <Compile Include="Controller\LoginController.cs" />
     <Compile Include="Controller\ProgressController.cs" />
     <Compile Include="Controller\ProjectController.cs" />
+    <Compile Include="Controller\ProjectManagementController.cs" />
     <Compile Include="Controller\StudentController.cs" />
     <Compile Include="Model\DBProjectStudent.Context.cs">
       <AutoGen>True</AutoGen>
