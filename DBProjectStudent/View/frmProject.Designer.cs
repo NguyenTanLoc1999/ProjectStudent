@@ -195,7 +195,7 @@
             this.dgvProject.Location = new System.Drawing.Point(3, 218);
             this.dgvProject.Name = "dgvProject";
             this.dgvProject.RowTemplate.Height = 24;
-            this.dgvProject.Size = new System.Drawing.Size(1262, 405);
+            this.dgvProject.Size = new System.Drawing.Size(1262, 374);
             this.dgvProject.TabIndex = 24;
             this.dgvProject.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProject_CellContentClick);
             // 

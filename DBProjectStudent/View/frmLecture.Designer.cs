@@ -144,7 +144,7 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(514, 161);
+            this.btnDelete.Location = new System.Drawing.Point(529, 186);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(167, 41);
             this.btnDelete.TabIndex = 47;
@@ -155,7 +155,7 @@
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(127, 161);
+            this.btnAdd.Location = new System.Drawing.Point(142, 186);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(143, 41);
             this.btnAdd.TabIndex = 46;
@@ -231,6 +231,7 @@
             // 
             // dgvLecture
             // 
+            this.dgvLecture.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvLecture.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvLecture.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cID,
@@ -241,10 +242,11 @@
             this.cBirthday,
             this.cPhone,
             this.cEmail});
-            this.dgvLecture.Location = new System.Drawing.Point(16, 226);
+            this.dgvLecture.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvLecture.Location = new System.Drawing.Point(0, 321);
             this.dgvLecture.Name = "dgvLecture";
             this.dgvLecture.RowTemplate.Height = 24;
-            this.dgvLecture.Size = new System.Drawing.Size(1112, 241);
+            this.dgvLecture.Size = new System.Drawing.Size(1279, 314);
             this.dgvLecture.TabIndex = 57;
             this.dgvLecture.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLecture_CellClick);
             // 
@@ -291,7 +293,7 @@
             // btnUpdate
             // 
             this.btnUpdate.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUpdate.Location = new System.Drawing.Point(308, 161);
+            this.btnUpdate.Location = new System.Drawing.Point(323, 186);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(167, 41);
             this.btnUpdate.TabIndex = 58;
@@ -303,7 +305,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1158, 515);
+            this.ClientSize = new System.Drawing.Size(1279, 635);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.dgvLecture);
             this.Controls.Add(this.cmbGender);

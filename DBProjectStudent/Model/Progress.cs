@@ -20,7 +20,9 @@ namespace DBProjectStudent.Model
         public string StudentName { get; set; }
         public string LinkSource { get; set; }
         public string Note { get; set; }
-    
+        [System.ComponentModel.Browsable(false)]
         public virtual Project Project { get; set; }
+
+        
     }
 }

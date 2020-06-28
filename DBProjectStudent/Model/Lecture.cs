@@ -28,8 +28,18 @@ namespace DBProjectStudent.Model
         public Nullable<System.DateTime> L_birthday { get; set; }
         public string L_phone { get; set; }
         public string L_email { get; set; }
+        [System.ComponentModel.Browsable(false)]
+        public string IDLoginL { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [System.ComponentModel.Browsable(false)]
         public virtual ICollection<Project> Projects { get; set; }
+        [System.ComponentModel.Browsable(false)]
+        public virtual UserLogin UserLogin { get; set; }
+
+        public override string ToString()
+        {
+            return this.L_fullname;
+        }
     }
 }

@@ -28,8 +28,13 @@ namespace DBProjectStudent.Model
         public string S_phone { get; set; }
         public string S_email { get; set; }
         public string S_gender { get; set; }
+        [System.ComponentModel.Browsable(false)]
+        public string IDLogin { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [System.ComponentModel.Browsable(false)]
         public virtual ICollection<ProjectManagement> ProjectManagements { get; set; }
+        [System.ComponentModel.Browsable(false)]
+        public virtual UserLogin UserLogin { get; set; }
     }
 }

@@ -14,8 +14,20 @@ namespace DBProjectStudent.Model
     
     public partial class UserLogin
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public UserLogin()
+        {
+            this.Lectures = new HashSet<Lecture>();
+            this.Students = new HashSet<Student>();
+        }
+    
         public string ID { get; set; }
         public string Pass { get; set; }
         public string roleuser { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Lecture> Lectures { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Student> Students { get; set; }
     }
 }

@@ -4,6 +4,7 @@
     <EntitySetMapping Name="Lectures">
       <EntityTypeMapping TypeName="DBProjectStudentModel.Lecture">
         <MappingFragment StoreEntitySet="Lecture">
+          <ScalarProperty Name="IDLoginL" ColumnName="IDLoginL" />
           <ScalarProperty Name="L_email" ColumnName="L_email" />
           <ScalarProperty Name="L_phone" ColumnName="L_phone" />
           <ScalarProperty Name="L_birthday" ColumnName="L_birthday" />
@@ -52,6 +53,7 @@
     <EntitySetMapping Name="Students">
       <EntityTypeMapping TypeName="DBProjectStudentModel.Student">
         <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="IDLogin" ColumnName="IDLogin" />
           <ScalarProperty Name="S_gender" ColumnName="S_gender" />
           <ScalarProperty Name="S_email" ColumnName="S_email" />
           <ScalarProperty Name="S_phone" ColumnName="S_phone" />

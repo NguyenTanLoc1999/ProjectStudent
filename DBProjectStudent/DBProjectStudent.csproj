@@ -106,6 +106,12 @@
     <Compile Include="View\frmLecture.Designer.cs">
       <DependentUpon>frmLecture.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\frmMainMDI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmMainMDI.Designer.cs">
+      <DependentUpon>frmMainMDI.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\frmProgress.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,6 +147,9 @@
     </Compile>
     <EmbeddedResource Include="View\frmLecture.resx">
       <DependentUpon>frmLecture.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmMainMDI.resx">
+      <DependentUpon>frmMainMDI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmProgress.resx">
       <DependentUpon>frmProgress.cs</DependentUpon>
