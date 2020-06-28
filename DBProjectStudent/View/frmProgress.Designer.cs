@@ -41,6 +41,9 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.cmbStudentName = new System.Windows.Forms.ComboBox();
             this.dgvProgress = new System.Windows.Forms.DataGridView();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProgress)).BeginInit();
             this.SuspendLayout();
             // 
@@ -165,11 +168,44 @@
             this.dgvProgress.Size = new System.Drawing.Size(1279, 306);
             this.dgvProgress.TabIndex = 63;
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Location = new System.Drawing.Point(405, 214);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(167, 41);
+            this.btnUpdate.TabIndex = 66;
+            this.btnUpdate.Text = "Update Progress";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(592, 214);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(164, 41);
+            this.btnDelete.TabIndex = 65;
+            this.btnDelete.Text = "Delete Progress";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.Location = new System.Drawing.Point(241, 214);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(145, 41);
+            this.btnAdd.TabIndex = 64;
+            this.btnAdd.Text = "Add Progress";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            // 
             // frmProgress
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1279, 635);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.dgvProgress);
             this.Controls.Add(this.cmbStudentName);
             this.Controls.Add(this.textBox1);
@@ -207,5 +243,8 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.ComboBox cmbStudentName;
         private System.Windows.Forms.DataGridView dgvProgress;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnDelete;
+        private System.Windows.Forms.Button btnAdd;
     }
 }
