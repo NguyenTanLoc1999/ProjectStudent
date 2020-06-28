@@ -184,6 +184,8 @@
             // 
             // dgvProject
             // 
+            this.dgvProject.AllowUserToAddRows = false;
+            this.dgvProject.AllowUserToDeleteRows = false;
             this.dgvProject.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProject.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProject.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -194,10 +196,12 @@
             this.cTotime});
             this.dgvProject.Location = new System.Drawing.Point(3, 218);
             this.dgvProject.Name = "dgvProject";
+            this.dgvProject.ReadOnly = true;
             this.dgvProject.RowTemplate.Height = 24;
             this.dgvProject.Size = new System.Drawing.Size(1262, 374);
             this.dgvProject.TabIndex = 24;
             this.dgvProject.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProject_CellContentClick);
+            this.dgvProject.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProject_CellDoubleClick);
             // 
             // cID
             // 
@@ -331,7 +335,6 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmProject";
             this.Text = "Projects Management";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.dgvProject)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

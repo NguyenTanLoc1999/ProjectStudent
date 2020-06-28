@@ -15,6 +15,8 @@ namespace DBProjectStudent.View
 {
     public partial class frmProject : Form
     {
+        Project getProject;
+
         private List<string> getIDLecture()
         {
             List<string> lectures = new List<string>();
@@ -231,6 +233,24 @@ namespace DBProjectStudent.View
                 source.DataSource = ProjectController.getAllProject();
                 this.dgvProject.DataSource = source;
             }
+        }
+
+        private void dgvProject_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)  // chac chan phai chon 1 hang
+            {
+                getProject = new Project();
+                DataGridViewRow row = this.dgvProject.Rows[e.RowIndex];
+
+                getProject.P_ID = int.Parse(row.Cells[0].Value.ToString());
+                getProject.P_title = row.Cells[1].Value.ToString();
+                getProject.P_description = row.Cells[2].Value.ToString();
+                getProject.L_ID = row.Cells[6].Value.ToString();
+
+                frmProjectDetail frm = new frmProjectDetail(getProject.P_ID, getProject.P_title, getProject.P_description, getProject.L_ID);
+                frm.ShowDialog();
+            }
+            
         }
     }
 }

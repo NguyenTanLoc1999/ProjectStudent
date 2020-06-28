@@ -39,5 +39,12 @@ namespace DBProjectStudent.View
         {
 
         }
+
+        private void frmProgress_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
     }
 }

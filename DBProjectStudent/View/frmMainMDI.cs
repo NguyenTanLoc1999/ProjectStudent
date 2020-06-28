@@ -68,7 +68,8 @@ namespace DBProjectStudent.View
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            if (MessageBox.Show("Bạn có muốn thoát không?", "Thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                Application.Exit();
         }
 
         private void frmMainMDI_MdiChildActivate(object sender, EventArgs e)

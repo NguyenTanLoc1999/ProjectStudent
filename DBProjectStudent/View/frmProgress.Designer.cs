@@ -102,7 +102,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(459, 42);
+            this.label4.Location = new System.Drawing.Point(639, 42);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(115, 21);
             this.label4.TabIndex = 57;
@@ -113,7 +113,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(459, 90);
+            this.label5.Location = new System.Drawing.Point(639, 90);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(101, 21);
             this.label5.TabIndex = 58;
@@ -123,7 +123,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(459, 128);
+            this.label6.Location = new System.Drawing.Point(639, 128);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 21);
             this.label6.TabIndex = 59;
@@ -132,7 +132,7 @@
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(592, 125);
+            this.textBox1.Location = new System.Drawing.Point(772, 125);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(210, 28);
             this.textBox1.TabIndex = 61;
@@ -140,7 +140,7 @@
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(592, 77);
+            this.textBox2.Location = new System.Drawing.Point(772, 77);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(210, 28);
             this.textBox2.TabIndex = 60;
@@ -149,25 +149,27 @@
             // 
             this.cmbStudentName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbStudentName.FormattingEnabled = true;
-            this.cmbStudentName.Location = new System.Drawing.Point(592, 33);
+            this.cmbStudentName.Location = new System.Drawing.Point(772, 33);
             this.cmbStudentName.Name = "cmbStudentName";
             this.cmbStudentName.Size = new System.Drawing.Size(210, 30);
             this.cmbStudentName.TabIndex = 62;
             // 
             // dgvProgress
             // 
+            this.dgvProgress.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProgress.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProgress.Location = new System.Drawing.Point(12, 209);
+            this.dgvProgress.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvProgress.Location = new System.Drawing.Point(0, 329);
             this.dgvProgress.Name = "dgvProgress";
             this.dgvProgress.RowTemplate.Height = 24;
-            this.dgvProgress.Size = new System.Drawing.Size(855, 263);
+            this.dgvProgress.Size = new System.Drawing.Size(1279, 306);
             this.dgvProgress.TabIndex = 63;
             // 
             // frmProgress
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(908, 534);
+            this.ClientSize = new System.Drawing.Size(1279, 635);
             this.Controls.Add(this.dgvProgress);
             this.Controls.Add(this.cmbStudentName);
             this.Controls.Add(this.textBox1);
@@ -183,6 +185,7 @@
             this.Controls.Add(this.txtSTT);
             this.Name = "frmProgress";
             this.Text = "frmProgress";
+            this.Load += new System.EventHandler(this.frmProgress_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProgress)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
