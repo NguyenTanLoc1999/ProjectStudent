@@ -37,7 +37,7 @@ create table Project
 )
 create table ProjectManagement
 (
-	PM_ID int identity(1,1) primary key,
+	--PM_ID int identity(1,1) primary key,
 	P_ID int,
 	--L_ID varchar(20),
 	S_ID varchar(20),
@@ -55,18 +55,19 @@ create table UserLogin
 )
 create table Progress
 (
-	ID int identity(1,1) ,
+	--ID int identity(1,1) ,
 	P_ID int primary key,
+	S_ID varchar(20),
 	ProgressName nvarchar(100),
-	StudentName nvarchar(100),
-	LinkSource varchar(100),
 	Note nvarchar(100),	
-	foreign key(P_ID) references Project(P_ID)	
+	LinkSource varchar(100)
+
+	--foreign key(P_ID) references Project(P_ID)	
 )
 
-
---alter table ProjectManagement
---drop  constraint [FK__ProjectMan__S_ID__2DE6D218]
+alter table Progress
+add STT int identity(1,1) primary key
+--ALTER TABLE ProjectManagement ADD PRIMARY KEY(P_ID,S_ID) 
 --drop table Student
 --drop table Project
 --drop table Lecture
