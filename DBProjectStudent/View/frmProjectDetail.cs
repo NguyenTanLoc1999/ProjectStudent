@@ -22,6 +22,14 @@ namespace DBProjectStudent.View
         public frmProjectDetail(int ID, string Title, string Decription,string Lectureid)
         {
             InitializeComponent();
+            this.cID.DataPropertyName = nameof(Student.S_ID);
+            this.cName.DataPropertyName = nameof(Student.S_name);
+            this.cFullname.DataPropertyName = nameof(Student.S_fullname);
+            this.cMajor.DataPropertyName = nameof(Student.S_major);
+            this.cGender.DataPropertyName = nameof(Student.S_gender);
+            this.cBirthday.DataPropertyName = nameof(Student.S_birthday);
+            this.cPhone.DataPropertyName = nameof(Student.S_phone);
+            this.cEmail.DataPropertyName = nameof(Student.S_email);
 
             id = ID;
             _title = Title;
@@ -72,7 +80,7 @@ namespace DBProjectStudent.View
                 return;
             }
             string idstudent =this.dgvProjectDetail.SelectedRows[0].Cells[0].Value.ToString().Trim();
-            if (ProjectManagementController.DeleteProjectStudent(idstudent) == false)
+            if (ProjectManagementController.DeleteProjectStudent(id,idstudent) == false)
             {
                 MessageBox.Show("Cannot delete project!!!");
             }

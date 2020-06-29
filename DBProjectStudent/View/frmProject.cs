@@ -43,8 +43,10 @@ namespace DBProjectStudent.View
             this.cDescription.DataPropertyName = nameof(Project.P_description);
             this.cFromtime.DataPropertyName = nameof(Project.P_fromtime);
             this.cTotime.DataPropertyName = nameof(Project.P_totime);
+            this.cPoint.DataPropertyName = nameof(Project.P_point);
+            this.cIDlecture.DataPropertyName = nameof(Project.L_ID);
             //this.cStudent.DataPropertyName = nameof(Project.Student.S_fullname);
-            
+
             dgvProject.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvProject.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             
@@ -110,13 +112,6 @@ namespace DBProjectStudent.View
                 cmbLecturerID.Text = row.Cells[6].Value.ToString();
 
             }
-        }
-
-        
-
-        private void listStudentSearch_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void btnDelete_Click(object sender, EventArgs e)

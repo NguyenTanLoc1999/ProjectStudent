@@ -47,13 +47,13 @@ namespace DBProjectStudent.Controller
             }
 
         }
-        public static bool DeleteProjectStudent(string idstudent)
+        public static bool DeleteProjectStudent(int idproject,string idstudent)
         {
             using (var _context = new DBProjectStudentEntities())
             {
                 var student = (from x in _context.ProjectManagements
-                               where x.S_ID == idstudent
-                               select x).Single();
+                               where x.S_ID == idstudent &&x.P_ID  ==idproject
+                               select x).SingleOrDefault();
 
                 _context.ProjectManagements.Remove(student);
                 _context.SaveChanges();

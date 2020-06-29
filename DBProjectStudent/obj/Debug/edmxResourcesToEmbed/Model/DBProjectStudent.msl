@@ -53,6 +53,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ProjectManagements">
+      <EntityTypeMapping TypeName="DBProjectStudentModel.ProjectManagement">
+        <MappingFragment StoreEntitySet="ProjectManagement">
+          <ScalarProperty Name="S_ID" ColumnName="S_ID" />
+          <ScalarProperty Name="P_ID" ColumnName="P_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Progresses">
       <EntityTypeMapping TypeName="DBProjectStudentModel.Progress">
         <MappingFragment StoreEntitySet="Progress">
@@ -61,14 +69,7 @@
           <ScalarProperty Name="ProgressName" ColumnName="ProgressName" />
           <ScalarProperty Name="S_ID" ColumnName="S_ID" />
           <ScalarProperty Name="P_ID" ColumnName="P_ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ProjectManagements">
-      <EntityTypeMapping TypeName="DBProjectStudentModel.ProjectManagement">
-        <MappingFragment StoreEntitySet="ProjectManagement">
-          <ScalarProperty Name="S_ID" ColumnName="S_ID" />
-          <ScalarProperty Name="P_ID" ColumnName="P_ID" />
+          <ScalarProperty Name="STT" ColumnName="STT" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

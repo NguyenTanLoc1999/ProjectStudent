@@ -146,5 +146,14 @@ namespace DBProjectStudent.Controller
                 return _context.Students.SingleOrDefault(s => s.S_ID == idStudent);
             }
         }
+
+        public static List<Progress> listProgressOfStudent(int P_ID,string S_ID)
+        {
+            using (var _context = new DBProjectStudentEntities())
+            {
+                var student = _context.Progresses.Where(p=>p.P_ID ==P_ID && p.S_ID ==S_ID).ToList();
+                return student;
+            }
+        }
     }
 }

@@ -21,9 +21,11 @@
         </EntityType>
         <EntityType Name="Progress">
           <Key>
+            <PropertyRef Name="STT" />
             <PropertyRef Name="P_ID" />
             <PropertyRef Name="S_ID" />
           </Key>
+          <Property Name="STT" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="P_ID" Type="int" Nullable="false" />
           <Property Name="S_ID" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="ProgressName" Type="nvarchar" MaxLength="100" />
@@ -134,7 +136,7 @@
         </Association>
         <Association Name="FK_Progress_ProjectManagement">
           <End Role="ProjectManagement" Type="Self.ProjectManagement" Multiplicity="1" />
-          <End Role="Progress" Type="Self.Progress" Multiplicity="0..1" />
+          <End Role="Progress" Type="Self.Progress" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="ProjectManagement">
               <PropertyRef Name="P_ID" />
@@ -199,12 +201,7 @@
             <End Role="UserLogin" EntitySet="UserLogins" />
             <End Role="Student" EntitySet="Students" />
           </AssociationSet>
-          <EntitySet Name="Progresses" EntityType="DBProjectStudentModel.Progress" />
           <EntitySet Name="ProjectManagements" EntityType="DBProjectStudentModel.ProjectManagement" />
-          <AssociationSet Name="FK_Progress_ProjectManagement" Association="DBProjectStudentModel.FK_Progress_ProjectManagement">
-            <End Role="ProjectManagement" EntitySet="ProjectManagements" />
-            <End Role="Progress" EntitySet="Progresses" />
-          </AssociationSet>
           <AssociationSet Name="FK__ProjectMan__P_ID__3D2915A8" Association="DBProjectStudentModel.FK__ProjectMan__P_ID__3D2915A8">
             <End Role="Project" EntitySet="Projects" />
             <End Role="ProjectManagement" EntitySet="ProjectManagements" />
@@ -212,6 +209,11 @@
           <AssociationSet Name="FK__ProjectMan__S_ID__3E1D39E1" Association="DBProjectStudentModel.FK__ProjectMan__S_ID__3E1D39E1">
             <End Role="Student" EntitySet="Students" />
             <End Role="ProjectManagement" EntitySet="ProjectManagements" />
+          </AssociationSet>
+          <EntitySet Name="Progresses" EntityType="DBProjectStudentModel.Progress" />
+          <AssociationSet Name="FK_Progress_ProjectManagement" Association="DBProjectStudentModel.FK_Progress_ProjectManagement">
+            <End Role="ProjectManagement" EntitySet="ProjectManagements" />
+            <End Role="Progress" EntitySet="Progresses" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Lecture">
@@ -306,18 +308,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Progress">
-          <Key>
-            <PropertyRef Name="P_ID" />
-            <PropertyRef Name="S_ID" />
-          </Key>
-          <Property Name="P_ID" Type="Int32" Nullable="false" />
-          <Property Name="S_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="ProgressName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Note" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="LinkSource" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ProjectManagement" Relationship="DBProjectStudentModel.FK_Progress_ProjectManagement" FromRole="Progress" ToRole="ProjectManagement" />
-        </EntityType>
         <EntityType Name="ProjectManagement">
           <Key>
             <PropertyRef Name="P_ID" />
@@ -325,24 +315,10 @@
           </Key>
           <Property Name="P_ID" Type="Int32" Nullable="false" />
           <Property Name="S_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Progress" Relationship="DBProjectStudentModel.FK_Progress_ProjectManagement" FromRole="ProjectManagement" ToRole="Progress" />
           <NavigationProperty Name="Project" Relationship="DBProjectStudentModel.FK__ProjectMan__P_ID__3D2915A8" FromRole="ProjectManagement" ToRole="Project" />
           <NavigationProperty Name="Student" Relationship="DBProjectStudentModel.FK__ProjectMan__S_ID__3E1D39E1" FromRole="ProjectManagement" ToRole="Student" />
+          <NavigationProperty Name="Progresses" Relationship="DBProjectStudentModel.FK_Progress_ProjectManagement" FromRole="ProjectManagement" ToRole="Progress" />
         </EntityType>
-        <Association Name="FK_Progress_ProjectManagement">
-          <End Type="DBProjectStudentModel.ProjectManagement" Role="ProjectManagement" Multiplicity="1" />
-          <End Type="DBProjectStudentModel.Progress" Role="Progress" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="ProjectManagement">
-              <PropertyRef Name="P_ID" />
-              <PropertyRef Name="S_ID" />
-            </Principal>
-            <Dependent Role="Progress">
-              <PropertyRef Name="P_ID" />
-              <PropertyRef Name="S_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__ProjectMan__P_ID__3D2915A8">
           <End Type="DBProjectStudentModel.Project" Role="Project" Multiplicity="1" />
           <End Type="DBProjectStudentModel.ProjectManagement" Role="ProjectManagement" Multiplicity="*" />
@@ -363,6 +339,34 @@
               <PropertyRef Name="S_ID" />
             </Principal>
             <Dependent Role="ProjectManagement">
+              <PropertyRef Name="S_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Progress">
+          <Key>
+            <PropertyRef Name="STT" />
+            <PropertyRef Name="P_ID" />
+            <PropertyRef Name="S_ID" />
+          </Key>
+          <Property Name="STT" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="P_ID" Type="Int32" Nullable="false" />
+          <Property Name="S_ID" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ProgressName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LinkSource" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProjectManagement" Relationship="DBProjectStudentModel.FK_Progress_ProjectManagement" FromRole="Progress" ToRole="ProjectManagement" />
+        </EntityType>
+        <Association Name="FK_Progress_ProjectManagement">
+          <End Type="DBProjectStudentModel.ProjectManagement" Role="ProjectManagement" Multiplicity="1" />
+          <End Type="DBProjectStudentModel.Progress" Role="Progress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProjectManagement">
+              <PropertyRef Name="P_ID" />
+              <PropertyRef Name="S_ID" />
+            </Principal>
+            <Dependent Role="Progress">
+              <PropertyRef Name="P_ID" />
               <PropertyRef Name="S_ID" />
             </Dependent>
           </ReferentialConstraint>
@@ -425,6 +429,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="ProjectManagements">
+            <EntityTypeMapping TypeName="DBProjectStudentModel.ProjectManagement">
+              <MappingFragment StoreEntitySet="ProjectManagement">
+                <ScalarProperty Name="S_ID" ColumnName="S_ID" />
+                <ScalarProperty Name="P_ID" ColumnName="P_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Progresses">
             <EntityTypeMapping TypeName="DBProjectStudentModel.Progress">
               <MappingFragment StoreEntitySet="Progress">
@@ -433,14 +445,7 @@
                 <ScalarProperty Name="ProgressName" ColumnName="ProgressName" />
                 <ScalarProperty Name="S_ID" ColumnName="S_ID" />
                 <ScalarProperty Name="P_ID" ColumnName="P_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProjectManagements">
-            <EntityTypeMapping TypeName="DBProjectStudentModel.ProjectManagement">
-              <MappingFragment StoreEntitySet="ProjectManagement">
-                <ScalarProperty Name="S_ID" ColumnName="S_ID" />
-                <ScalarProperty Name="P_ID" ColumnName="P_ID" />
+                <ScalarProperty Name="STT" ColumnName="STT" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

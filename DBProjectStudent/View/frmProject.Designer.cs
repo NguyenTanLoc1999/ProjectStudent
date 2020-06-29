@@ -50,6 +50,8 @@
             this.txtPoint = new System.Windows.Forms.TextBox();
             this.cmbLecturerID = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.cPoint = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cIDlecture = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProject)).BeginInit();
             this.SuspendLayout();
             // 
@@ -189,7 +191,9 @@
             this.cTitle,
             this.cDescription,
             this.cFromtime,
-            this.cTotime});
+            this.cTotime,
+            this.cPoint,
+            this.cIDlecture});
             this.dgvProject.Location = new System.Drawing.Point(3, 218);
             this.dgvProject.Name = "dgvProject";
             this.dgvProject.ReadOnly = true;
@@ -266,6 +270,18 @@
             this.label8.TabIndex = 37;
             this.label8.Text = "Search ID Lecture";
             // 
+            // cPoint
+            // 
+            this.cPoint.HeaderText = "Point";
+            this.cPoint.Name = "cPoint";
+            this.cPoint.ReadOnly = true;
+            // 
+            // cIDlecture
+            // 
+            this.cIDlecture.HeaderText = "Lecture ID";
+            this.cIDlecture.Name = "cIDlecture";
+            this.cIDlecture.ReadOnly = true;
+            // 
             // frmProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
@@ -321,5 +337,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn cFromtime;
         private System.Windows.Forms.DataGridViewTextBoxColumn cTotime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPoint;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cIDlecture;
     }
 }

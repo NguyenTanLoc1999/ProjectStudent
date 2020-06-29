@@ -42,6 +42,14 @@
             this.lblLectureID = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.cID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cFullname = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cMajor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cGender = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cBirthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProjectDetail)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,6 +100,15 @@
             this.dgvProjectDetail.AllowUserToDeleteRows = false;
             this.dgvProjectDetail.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProjectDetail.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProjectDetail.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cID,
+            this.cName,
+            this.cFullname,
+            this.cMajor,
+            this.cGender,
+            this.cBirthday,
+            this.cPhone,
+            this.cEmail});
             this.dgvProjectDetail.Location = new System.Drawing.Point(12, 313);
             this.dgvProjectDetail.Name = "dgvProjectDetail";
             this.dgvProjectDetail.ReadOnly = true;
@@ -183,12 +200,60 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(291, 21);
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(319, 9);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(134, 23);
+            this.label5.Size = new System.Drawing.Size(234, 38);
             this.label5.TabIndex = 76;
             this.label5.Text = "Group Student";
+            // 
+            // cID
+            // 
+            this.cID.HeaderText = "MSSV";
+            this.cID.Name = "cID";
+            this.cID.ReadOnly = true;
+            // 
+            // cName
+            // 
+            this.cName.HeaderText = "Name";
+            this.cName.Name = "cName";
+            this.cName.ReadOnly = true;
+            // 
+            // cFullname
+            // 
+            this.cFullname.HeaderText = "Full Name";
+            this.cFullname.Name = "cFullname";
+            this.cFullname.ReadOnly = true;
+            // 
+            // cMajor
+            // 
+            this.cMajor.HeaderText = "Major";
+            this.cMajor.Name = "cMajor";
+            this.cMajor.ReadOnly = true;
+            // 
+            // cGender
+            // 
+            this.cGender.HeaderText = "Gender";
+            this.cGender.Name = "cGender";
+            this.cGender.ReadOnly = true;
+            // 
+            // cBirthday
+            // 
+            this.cBirthday.HeaderText = "Birthday";
+            this.cBirthday.Name = "cBirthday";
+            this.cBirthday.ReadOnly = true;
+            // 
+            // cPhone
+            // 
+            this.cPhone.HeaderText = "Phone";
+            this.cPhone.Name = "cPhone";
+            this.cPhone.ReadOnly = true;
+            // 
+            // cEmail
+            // 
+            this.cEmail.HeaderText = "Email";
+            this.cEmail.Name = "cEmail";
+            this.cEmail.ReadOnly = true;
             // 
             // frmProjectDetail
             // 
@@ -233,5 +298,13 @@
         private System.Windows.Forms.Label lblLectureID;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cFullname;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cMajor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cGender;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cBirthday;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cPhone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cEmail;
     }
 }

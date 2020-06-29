@@ -16,9 +16,11 @@
   </EntityType>
   <EntityType Name="Progress">
     <Key>
+      <PropertyRef Name="STT" />
       <PropertyRef Name="P_ID" />
       <PropertyRef Name="S_ID" />
     </Key>
+    <Property Name="STT" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="P_ID" Type="int" Nullable="false" />
     <Property Name="S_ID" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="ProgressName" Type="nvarchar" MaxLength="100" />
@@ -129,7 +131,7 @@
   </Association>
   <Association Name="FK_Progress_ProjectManagement">
     <End Role="ProjectManagement" Type="Self.ProjectManagement" Multiplicity="1" />
-    <End Role="Progress" Type="Self.Progress" Multiplicity="0..1" />
+    <End Role="Progress" Type="Self.Progress" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="ProjectManagement">
         <PropertyRef Name="P_ID" />

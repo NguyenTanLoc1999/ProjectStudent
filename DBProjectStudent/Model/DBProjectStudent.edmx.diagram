@@ -12,11 +12,11 @@
         <AssociationConnector Association="DBProjectStudentModel.FK__Project__L_ID__3A4CA8FD" />
         <AssociationConnector Association="DBProjectStudentModel.FK__Lecture__IDLogin__4E53A1AA" />
         <AssociationConnector Association="DBProjectStudentModel.FK__Student__IDLogin__4D5F7D71" />
-        <EntityTypeShape EntityType="DBProjectStudentModel.Progress" Width="1.5" PointX="8.125" PointY="1.875" />
         <EntityTypeShape EntityType="DBProjectStudentModel.ProjectManagement" Width="1.5" PointX="5.5" PointY="2.125" />
-        <AssociationConnector Association="DBProjectStudentModel.FK_Progress_ProjectManagement" />
         <AssociationConnector Association="DBProjectStudentModel.FK__ProjectMan__P_ID__3D2915A8" />
         <AssociationConnector Association="DBProjectStudentModel.FK__ProjectMan__S_ID__3E1D39E1" />
+        <EntityTypeShape EntityType="DBProjectStudentModel.Progress" Width="1.5" PointX="7.75" PointY="1.875" />
+        <AssociationConnector Association="DBProjectStudentModel.FK_Progress_ProjectManagement" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
