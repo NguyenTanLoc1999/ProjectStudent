@@ -55,6 +55,7 @@
             this.cBirthday = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnUpdate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).BeginInit();
             this.SuspendLayout();
             // 
@@ -81,19 +82,20 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(300, 156);
+            this.btnDelete.Location = new System.Drawing.Point(493, 175);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(130, 41);
+            this.btnDelete.Size = new System.Drawing.Size(164, 41);
             this.btnDelete.TabIndex = 25;
             this.btnDelete.Text = "Delete Student";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnAdd
             // 
             this.btnAdd.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(127, 156);
+            this.btnAdd.Location = new System.Drawing.Point(142, 175);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(130, 41);
+            this.btnAdd.Size = new System.Drawing.Size(145, 41);
             this.btnAdd.TabIndex = 24;
             this.btnAdd.Text = "Add Student";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -231,6 +233,7 @@
             // 
             // dgvStudent
             // 
+            this.dgvStudent.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvStudent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStudent.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cID,
@@ -241,11 +244,13 @@
             this.cBirthday,
             this.cPhone,
             this.cEmail});
-            this.dgvStudent.Location = new System.Drawing.Point(12, 219);
+            this.dgvStudent.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dgvStudent.Location = new System.Drawing.Point(0, 313);
             this.dgvStudent.Name = "dgvStudent";
             this.dgvStudent.RowTemplate.Height = 24;
-            this.dgvStudent.Size = new System.Drawing.Size(1116, 241);
+            this.dgvStudent.Size = new System.Drawing.Size(1279, 322);
             this.dgvStudent.TabIndex = 39;
+            this.dgvStudent.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudent_CellClick);
             // 
             // cID
             // 
@@ -287,11 +292,24 @@
             this.cEmail.HeaderText = "Email";
             this.cEmail.Name = "cEmail";
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.Location = new System.Drawing.Point(306, 175);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(167, 41);
+            this.btnUpdate.TabIndex = 40;
+            this.btnUpdate.Text = "Update Student";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // frmStudents
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1140, 489);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(1279, 635);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.dgvStudent);
             this.Controls.Add(this.cmbGender);
             this.Controls.Add(this.cmbMajor);
@@ -311,7 +329,10 @@
             this.Controls.Add(this.txtStudentname);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtStudentID);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
+            this.MaximizeBox = false;
             this.Name = "frmStudents";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Students Management";
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).EndInit();
             this.ResumeLayout(false);
@@ -323,8 +344,6 @@
 
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DateTimePicker dateTimeBirthday;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -339,7 +358,6 @@
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.ComboBox cmbMajor;
         private System.Windows.Forms.ComboBox cmbGender;
-        private System.Windows.Forms.DataGridView dgvStudent;
         private System.Windows.Forms.DataGridViewTextBoxColumn cID;
         private System.Windows.Forms.DataGridViewTextBoxColumn cStudentsName;
         private System.Windows.Forms.DataGridViewTextBoxColumn cFullname;
@@ -348,5 +366,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cBirthday;
         private System.Windows.Forms.DataGridViewTextBoxColumn cPhone;
         private System.Windows.Forms.DataGridViewTextBoxColumn cEmail;
+        public System.Windows.Forms.Button btnDelete;
+        public System.Windows.Forms.Button btnAdd;
+        public System.Windows.Forms.Button btnUpdate;
+        public System.Windows.Forms.DataGridView dgvStudent;
     }
 }

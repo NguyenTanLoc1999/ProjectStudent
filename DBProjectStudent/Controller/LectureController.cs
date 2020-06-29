@@ -9,7 +9,7 @@ namespace DBProjectStudent.Controller
 {
     public class LectureController
     {
-        public static int getIDfromDB()
+        public static string getIDfromDB()
         {
             using (var _context = new DBProjectStudentEntities())
             {
@@ -18,14 +18,7 @@ namespace DBProjectStudent.Controller
 
                 //return int.Parse(listid.Max()) + 1;
 
-                string maxID = listid.Max() + 1;
-                int i;
-                for (i = 1; i < int.Parse(maxID); i++)
-                {
-                    if (listid.Where(x => x == i.ToString()).Count() <= 0)
-                    { return i; }
-                }
-                return i + 1;
+                return listid.ToString();
             }
         }
         public static List<Lecture> getAllLecture()
@@ -96,6 +89,47 @@ namespace DBProjectStudent.Controller
                                     L_email = x.L_email,
                                 });
                 return lectures.ToList();
+            }
+        }
+
+        public static bool UpdateLecture(Lecture lectureadd)
+        {
+            using (var _context = new DBProjectStudentEntities())
+            {
+                var lecture = (from l in _context.Lectures
+                            where l.L_ID == lectureadd.L_ID
+                            select l).SingleOrDefault();
+                lecture.L_name = lectureadd.L_name;
+                lecture.L_fullname = lectureadd.L_fullname;
+                lecture.L_department = lectureadd.L_department;
+                lecture.L_gender = lectureadd.L_gender;
+                lecture.L_birthday = lectureadd.L_birthday;
+                lecture.L_phone = lectureadd.L_phone;
+                lecture.L_email = lectureadd.L_email;
+                //_context.Users.AddOrUpdate(user);
+                _context.SaveChanges();
+                return true;
+            }
+        }
+        public static bool DeleteLecture(string idLecture)
+        {
+            using (var _context = new DBProjectStudentEntities())
+            {
+                var lecture = (from x in _context.Lectures
+                               where x.L_ID == idLecture
+                               select x).Single();
+
+                _context.Lectures.Remove(lecture);
+                _context.SaveChanges();
+                return true;
+            }
+        }
+
+        public static Lecture getLectureInfomationAfterLogin(string idLogin)
+        {
+            using (var _context = new DBProjectStudentEntities())
+            {
+                return _context.Lectures.SingleOrDefault(s => s.IDLoginL == idLogin);              
             }
         }
     }

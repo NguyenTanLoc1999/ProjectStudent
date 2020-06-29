@@ -4,12 +4,19 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9a5d878273b046d68777d73da8aab9a4" Name="Diagram1" ZoomLevel="85">
-        <EntityTypeShape EntityType="DBProjectStudentModel.Lecture" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBProjectStudentModel.Project" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="DBProjectStudentModel.Student" Width="1.5" PointX="5.375" PointY="3.125" IsExpanded="true" />
-        <AssociationConnector Association="DBProjectStudentModel.FK__Project__L_ID__3B75D760" ManuallyRouted="false" />
-        <AssociationConnector Association="DBProjectStudentModel.FK__Project__S_ID__3A81B327" ManuallyRouted="false" />
+      <Diagram DiagramId="a532977b6aaa45c5810b56d2241d7c24" Name="Diagram1">
+        <EntityTypeShape EntityType="DBProjectStudentModel.Lecture" Width="1.5" PointX="3.75" PointY="0.5" />
+        <EntityTypeShape EntityType="DBProjectStudentModel.Project" Width="1.5" PointX="1.5" PointY="3.25" />
+        <EntityTypeShape EntityType="DBProjectStudentModel.Student" Width="1.5" PointX="3.75" PointY="5.375" />
+        <EntityTypeShape EntityType="DBProjectStudentModel.UserLogin" Width="1.5" PointX="0.5" PointY="0.5" />
+        <AssociationConnector Association="DBProjectStudentModel.FK__Project__L_ID__3A4CA8FD" />
+        <AssociationConnector Association="DBProjectStudentModel.FK__Lecture__IDLogin__4E53A1AA" />
+        <AssociationConnector Association="DBProjectStudentModel.FK__Student__IDLogin__4D5F7D71" />
+        <EntityTypeShape EntityType="DBProjectStudentModel.ProjectManagement" Width="1.5" PointX="5.5" PointY="2.125" />
+        <AssociationConnector Association="DBProjectStudentModel.FK__ProjectMan__P_ID__3D2915A8" />
+        <AssociationConnector Association="DBProjectStudentModel.FK__ProjectMan__S_ID__3E1D39E1" />
+        <EntityTypeShape EntityType="DBProjectStudentModel.Progress" Width="1.5" PointX="7.75" PointY="1.875" />
+        <AssociationConnector Association="DBProjectStudentModel.FK_Progress_ProjectManagement" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

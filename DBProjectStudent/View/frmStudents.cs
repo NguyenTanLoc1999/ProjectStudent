@@ -78,5 +78,102 @@ namespace DBProjectStudent.View
             source.DataSource = StudentController.getAllStudent();
             this.dgvStudent.DataSource = source;
         }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            Student student = new Student();
+
+            student.S_ID = this.dgvStudent.CurrentRow.Cells[0].Value.ToString();
+            if (student.S_ID.Length <= 0)
+                return;
+
+            if (this.dgvStudent.CurrentRow.Cells[1].Value is null)
+            {
+                this.dgvStudent.CurrentRow.Cells[1].Value = "";
+
+            }
+            student.S_name = this.txtStudentname.Text.Trim();
+
+            if (this.dgvStudent.CurrentRow.Cells[2].Value is null)
+            {
+                this.dgvStudent.CurrentRow.Cells[2].Value = "";
+            }
+            student.S_fullname = this.txtFullname.Text.Trim();
+            if (this.dgvStudent.CurrentRow.Cells[3].Value is null)
+            {
+                this.dgvStudent.CurrentRow.Cells[3].Value = "";
+            }
+            student.S_major = this.cmbMajor.Text.Trim();
+            if (this.dgvStudent.CurrentRow.Cells[4].Value is null)
+            {
+                this.dgvStudent.CurrentRow.Cells[4].Value = "";
+            }
+            student.S_gender = this.cmbGender.Text.Trim();
+            if (this.dgvStudent.CurrentRow.Cells[5].Value is null)
+            {
+                this.dgvStudent.CurrentRow.Cells[5].Value = "";
+            }
+            student.S_birthday = this.dateTimeBirthday.Value;
+            if (this.dgvStudent.CurrentRow.Cells[6].Value is null)
+            {
+                this.dgvStudent.CurrentRow.Cells[6].Value = "";
+            }
+            student.S_phone = this.txtPhone.Text.Trim();
+            if (this.dgvStudent.CurrentRow.Cells[7].Value is null)
+            {
+                this.dgvStudent.CurrentRow.Cells[7].Value = "";
+            }
+            student.S_email = this.txtEmail.Text.Trim();
+            if (StudentController.UpdateStudent(student) == false)
+            {
+                MessageBox.Show("Cannot update!!!");
+            }
+            else
+            {
+                MessageBox.Show("Update success", "Note", MessageBoxButtons.OK);
+                BindingSource source = new BindingSource();
+                source.DataSource = StudentController.getAllStudent();
+                this.dgvStudent.DataSource = source;
+            }
+        }
+
+        private void dgvStudent_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                //Lưu lại dòng dữ liệu vừa kích chọn
+                DataGridViewRow row = this.dgvStudent.Rows[e.RowIndex];
+                //Đưa dữ liệu vào textbox
+                txtStudentID.Text = row.Cells[0].Value.ToString();
+                txtStudentname.Text = row.Cells[1].Value.ToString();
+                txtFullname.Text = row.Cells[2].Value.ToString();
+                cmbMajor.Text = row.Cells[3].Value.ToString();
+                dateTimeBirthday.Text = row.Cells[4].Value.ToString();
+                txtPhone.Text = row.Cells[5].Value.ToString();
+                txtEmail.Text = row.Cells[6].Value.ToString();
+                cmbGender.Text = row.Cells[7].Value.ToString();
+
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (this.dgvStudent.SelectedRows.Count <= 0)
+            {
+                return;
+            }
+            string idstudent = this.dgvStudent.SelectedRows[0].Cells[0].Value.ToString().Trim();
+            if (StudentController.DeleteStudent(idstudent) == false)
+            {
+                MessageBox.Show("Cannot delete student!!!");
+            }
+            else
+            {
+                MessageBox.Show("Delete success!!!", "Note", MessageBoxButtons.OK);
+                BindingSource source = new BindingSource();
+                source.DataSource = StudentController.getAllStudent();
+                this.dgvStudent.DataSource = source;
+            }
+        }
     }
 }
