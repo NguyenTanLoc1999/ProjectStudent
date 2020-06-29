@@ -46,12 +46,12 @@
             this.cDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cFromtime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cTotime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cPoint = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cIDlecture = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label9 = new System.Windows.Forms.Label();
             this.txtPoint = new System.Windows.Forms.TextBox();
             this.cmbLecturerID = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.cPoint = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cIDlecture = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProject)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,7 +107,7 @@
             this.dateTimeTo.Location = new System.Drawing.Point(691, 70);
             this.dateTimeTo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dateTimeTo.Name = "dateTimeTo";
-            this.dateTimeTo.Size = new System.Drawing.Size(249, 27);
+            this.dateTimeTo.Size = new System.Drawing.Size(207, 27);
             this.dateTimeTo.TabIndex = 19;
             // 
             // dateTimeFrom
@@ -118,7 +118,7 @@
             this.dateTimeFrom.Location = new System.Drawing.Point(691, 20);
             this.dateTimeFrom.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dateTimeFrom.Name = "dateTimeFrom";
-            this.dateTimeFrom.Size = new System.Drawing.Size(249, 27);
+            this.dateTimeFrom.Size = new System.Drawing.Size(207, 27);
             this.dateTimeFrom.TabIndex = 18;
             // 
             // label4
@@ -233,6 +233,18 @@
             this.cTotime.Name = "cTotime";
             this.cTotime.ReadOnly = true;
             // 
+            // cPoint
+            // 
+            this.cPoint.HeaderText = "Point";
+            this.cPoint.Name = "cPoint";
+            this.cPoint.ReadOnly = true;
+            // 
+            // cIDlecture
+            // 
+            this.cIDlecture.HeaderText = "Lecture ID";
+            this.cIDlecture.Name = "cIDlecture";
+            this.cIDlecture.ReadOnly = true;
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -249,15 +261,15 @@
             this.txtPoint.Location = new System.Drawing.Point(691, 118);
             this.txtPoint.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPoint.Name = "txtPoint";
-            this.txtPoint.Size = new System.Drawing.Size(249, 27);
+            this.txtPoint.Size = new System.Drawing.Size(207, 27);
             this.txtPoint.TabIndex = 35;
             // 
             // cmbLecturerID
             // 
             this.cmbLecturerID.FormattingEnabled = true;
-            this.cmbLecturerID.Location = new System.Drawing.Point(773, 170);
+            this.cmbLecturerID.Location = new System.Drawing.Point(747, 170);
             this.cmbLecturerID.Name = "cmbLecturerID";
-            this.cmbLecturerID.Size = new System.Drawing.Size(167, 28);
+            this.cmbLecturerID.Size = new System.Drawing.Size(151, 28);
             this.cmbLecturerID.TabIndex = 36;
             // 
             // label8
@@ -269,18 +281,6 @@
             this.label8.Size = new System.Drawing.Size(146, 20);
             this.label8.TabIndex = 37;
             this.label8.Text = "Search ID Lecture";
-            // 
-            // cPoint
-            // 
-            this.cPoint.HeaderText = "Point";
-            this.cPoint.Name = "cPoint";
-            this.cPoint.ReadOnly = true;
-            // 
-            // cIDlecture
-            // 
-            this.cIDlecture.HeaderText = "Lecture ID";
-            this.cIDlecture.Name = "cIDlecture";
-            this.cIDlecture.ReadOnly = true;
             // 
             // frmProject
             // 
@@ -316,9 +316,6 @@
 
         #endregion
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.Button btnSaveProject;
         private System.Windows.Forms.DateTimePicker dateTimeTo;
         private System.Windows.Forms.DateTimePicker dateTimeFrom;
         private System.Windows.Forms.Label label4;
@@ -327,7 +324,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtTitle;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dgvProject;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtPoint;
         private System.Windows.Forms.ComboBox cmbLecturerID;
@@ -339,5 +335,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cTotime;
         private System.Windows.Forms.DataGridViewTextBoxColumn cPoint;
         private System.Windows.Forms.DataGridViewTextBoxColumn cIDlecture;
+        public System.Windows.Forms.Button btnDelete;
+        public System.Windows.Forms.Button btnUpdate;
+        public System.Windows.Forms.Button btnSaveProject;
+        public System.Windows.Forms.DataGridView dgvProject;
     }
 }

@@ -344,8 +344,6 @@
 
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnDelete;
-        private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.DateTimePicker dateTimeBirthday;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -360,7 +358,6 @@
         private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.ComboBox cmbMajor;
         private System.Windows.Forms.ComboBox cmbGender;
-        private System.Windows.Forms.DataGridView dgvStudent;
         private System.Windows.Forms.DataGridViewTextBoxColumn cID;
         private System.Windows.Forms.DataGridViewTextBoxColumn cStudentsName;
         private System.Windows.Forms.DataGridViewTextBoxColumn cFullname;
@@ -369,6 +366,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cBirthday;
         private System.Windows.Forms.DataGridViewTextBoxColumn cPhone;
         private System.Windows.Forms.DataGridViewTextBoxColumn cEmail;
-        private System.Windows.Forms.Button btnUpdate;
+        public System.Windows.Forms.Button btnDelete;
+        public System.Windows.Forms.Button btnAdd;
+        public System.Windows.Forms.Button btnUpdate;
+        public System.Windows.Forms.DataGridView dgvStudent;
     }
 }

@@ -124,5 +124,13 @@ namespace DBProjectStudent.Controller
                 return true;
             }
         }
+
+        public static Lecture getLectureInfomationAfterLogin(string idLogin)
+        {
+            using (var _context = new DBProjectStudentEntities())
+            {
+                return _context.Lectures.SingleOrDefault(s => s.IDLoginL == idLogin);              
+            }
+        }
     }
 }

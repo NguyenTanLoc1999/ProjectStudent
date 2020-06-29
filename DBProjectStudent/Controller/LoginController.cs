@@ -27,8 +27,8 @@ namespace DBProjectStudent.Controller
         }
         public static string getROLL(string username, string password)
         {
-            string temp1 = "Student";
-            string temp2 = "Lecture";
+            string temp1 = "0";
+            string temp2 = "1";
             using (var _context = new DBProjectStudentEntities())
             {
                 var check = from t in _context.UserLogins
@@ -36,9 +36,9 @@ namespace DBProjectStudent.Controller
                             select t;
                 foreach (var a in check)
                 {
-                    if (a.roleuser == "Student")
+                    if (a.roleuser == "0")
                         return temp1;
-                    if (a.roleuser == "Lecture")
+                    if (a.roleuser == "1")
                         return temp2;
                 }
                 return "NOTHING";

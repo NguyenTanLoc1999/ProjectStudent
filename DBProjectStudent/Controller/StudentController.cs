@@ -155,5 +155,13 @@ namespace DBProjectStudent.Controller
                 return student;
             }
         }
+
+        public static Student getStudentInfomationAfterLogin(string idLogin)
+        {
+            using (var _context = new DBProjectStudentEntities())
+            {
+                return _context.Students.SingleOrDefault(s => s.IDLogin == idLogin);
+            }
+        }
     }
 }
