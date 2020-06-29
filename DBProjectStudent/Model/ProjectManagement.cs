@@ -14,10 +14,10 @@ namespace DBProjectStudent.Model
     
     public partial class ProjectManagement
     {
-        public int PM_ID { get; set; }
-        public Nullable<int> P_ID { get; set; }
+        public int P_ID { get; set; }
         public string S_ID { get; set; }
-        [System.ComponentModel.Browsable(false)]
+    
+        public virtual Progress Progress { get; set; }
         public virtual Project Project { get; set; }
         public virtual Student Student { get; set; }
     }

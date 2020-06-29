@@ -30,16 +30,10 @@ namespace DBProjectStudent.Model
         public string S_gender { get; set; }
         [System.ComponentModel.Browsable(false)]
         public string IDLogin { get; set; }
-    
+        [System.ComponentModel.Browsable(false)]
+        public virtual UserLogin UserLogin { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         [System.ComponentModel.Browsable(false)]
         public virtual ICollection<ProjectManagement> ProjectManagements { get; set; }
-        [System.ComponentModel.Browsable(false)]
-        public virtual UserLogin UserLogin { get; set; }
-
-        public override string ToString()
-        {
-            return this.S_fullname;
-        }
     }
 }

@@ -18,7 +18,7 @@ namespace DBProjectStudent.View
         private string _title;
         private string _description;
         private string _lectureid;
-        Student rowStudent;
+        ProjectManagement rowStudent;
         public frmProjectDetail(int ID, string Title, string Decription,string Lectureid)
         {
             InitializeComponent();
@@ -87,17 +87,21 @@ namespace DBProjectStudent.View
 
         private void dgvProjectDetail_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //if (e.RowIndex >= 0)  // chac chan phai chon 1 hang
-            //{
-            //    rowStudent = new Student();
-            //    DataGridViewRow row = this.dgvProjectDetail.Rows[e.RowIndex];
+            if (e.RowIndex >= 0)  // chac chan phai chon 1 hang
+            {
+                rowStudent = new ProjectManagement();
+                DataGridViewRow row = this.dgvProjectDetail.Rows[e.RowIndex];
 
-            //    rowStudent.P_ID = int.Parse(lblProjectID.Text);
-            //    rowStudent.S_ID = row.Cells[0].Value.ToString();
-
-            //    frmProgress frm = new frmProgress(rowStudent.P_ID, rowStudent.S_ID);
-            //    frm.ShowDialog();
-            //}
+                rowStudent.P_ID = int.Parse(lblProjectID.Text);
+                rowStudent.S_ID = row.Cells[0].Value.ToString();
+                var student = StudentController.findStudentbySID(rowStudent.S_ID);
+                if(student != null)
+                {
+                    frmProgress frm = new frmProgress(rowStudent.P_ID, rowStudent.S_ID,student.S_fullname);
+                    frm.ShowDialog();
+                }
+                
+            }
         }
     }
 }

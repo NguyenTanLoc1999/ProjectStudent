@@ -27,10 +27,8 @@ namespace DBProjectStudent.Model
         public Nullable<System.DateTime> P_totime { get; set; }
         public string P_point { get; set; }
         public string L_ID { get; set; }
-    
+        
         public virtual Lecture Lecture { get; set; }
-        [System.ComponentModel.Browsable(false)]
-        public virtual Progress Progress { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         [System.ComponentModel.Browsable(false)]
         public virtual ICollection<ProjectManagement> ProjectManagements { get; set; }

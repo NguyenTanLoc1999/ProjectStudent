@@ -13,12 +13,18 @@ namespace DBProjectStudent.View
 {
     public partial class frmProgress : Form
     {
-        
-        public frmProgress(int ID, string S_ID)
+        private int _p_id;
+        private string _s_id;
+        private string _fullname;
+        public frmProgress(int P_ID, string S_ID,string Fullname)
         {
             InitializeComponent();
-
-
+            _p_id = P_ID;
+            _s_id = S_ID;
+            _fullname = Fullname;
+            txtProjectID.Text = _p_id.ToString();
+            txtStudentID.Text = _s_id;
+            txtStudentName.Text = _fullname;
         }
 
         private void label4_Click(object sender, EventArgs e)

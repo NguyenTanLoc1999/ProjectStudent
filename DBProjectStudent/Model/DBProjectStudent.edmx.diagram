@@ -6,17 +6,17 @@
     <edmx:Diagrams>
       <Diagram DiagramId="a532977b6aaa45c5810b56d2241d7c24" Name="Diagram1">
         <EntityTypeShape EntityType="DBProjectStudentModel.Lecture" Width="1.5" PointX="3.75" PointY="0.5" />
-        <EntityTypeShape EntityType="DBProjectStudentModel.Progress" Width="1.5" PointX="6.875" PointY="4.25" />
         <EntityTypeShape EntityType="DBProjectStudentModel.Project" Width="1.5" PointX="1.5" PointY="3.25" />
-        <EntityTypeShape EntityType="DBProjectStudentModel.ProjectManagement" Width="1.5" PointX="5.875" PointY="1.875" />
         <EntityTypeShape EntityType="DBProjectStudentModel.Student" Width="1.5" PointX="3.75" PointY="5.375" />
         <EntityTypeShape EntityType="DBProjectStudentModel.UserLogin" Width="1.5" PointX="0.5" PointY="0.5" />
         <AssociationConnector Association="DBProjectStudentModel.FK__Project__L_ID__3A4CA8FD" />
-        <AssociationConnector Association="DBProjectStudentModel.FK__Progress__P_ID__42E1EEFE" />
-        <AssociationConnector Association="DBProjectStudentModel.FK__ProjectMan__P_ID__3D2915A8" />
-        <AssociationConnector Association="DBProjectStudentModel.FK__ProjectMan__S_ID__3E1D39E1" />
         <AssociationConnector Association="DBProjectStudentModel.FK__Lecture__IDLogin__4E53A1AA" />
         <AssociationConnector Association="DBProjectStudentModel.FK__Student__IDLogin__4D5F7D71" />
+        <EntityTypeShape EntityType="DBProjectStudentModel.Progress" Width="1.5" PointX="8.125" PointY="1.875" />
+        <EntityTypeShape EntityType="DBProjectStudentModel.ProjectManagement" Width="1.5" PointX="5.5" PointY="2.125" />
+        <AssociationConnector Association="DBProjectStudentModel.FK_Progress_ProjectManagement" />
+        <AssociationConnector Association="DBProjectStudentModel.FK__ProjectMan__P_ID__3D2915A8" />
+        <AssociationConnector Association="DBProjectStudentModel.FK__ProjectMan__S_ID__3E1D39E1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

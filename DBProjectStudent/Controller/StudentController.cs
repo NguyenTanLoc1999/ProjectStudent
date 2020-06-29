@@ -139,5 +139,12 @@ namespace DBProjectStudent.Controller
                 return student;
             }
         }
+        public static Student findStudentbySID(string idStudent)
+        {
+            using (var _context = new DBProjectStudentEntities())
+            {
+                return _context.Students.SingleOrDefault(s => s.S_ID == idStudent);
+            }
+        }
     }
 }

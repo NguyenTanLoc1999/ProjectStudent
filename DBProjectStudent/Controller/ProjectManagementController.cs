@@ -25,13 +25,13 @@ namespace DBProjectStudent.Controller
                 var project = (from t in _context.ProjectManagements.AsEnumerable()
                                select new
                                {
-                                   PM_ID = t.PM_ID,
+ 
                                    P_ID = t.P_ID,
                                    S_ID = t.S_ID,
                                    Student = t.Student
                                }).Select(x => new ProjectManagement
                                {
-                                   PM_ID = x.PM_ID,
+  
                                    P_ID = x.P_ID,
                                    S_ID = x.S_ID,
                                    Student = x.Student

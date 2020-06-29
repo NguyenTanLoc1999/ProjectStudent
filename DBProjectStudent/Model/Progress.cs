@@ -14,15 +14,13 @@ namespace DBProjectStudent.Model
     
     public partial class Progress
     {
-        public int ID { get; set; }
         public int P_ID { get; set; }
+        public string S_ID { get; set; }
         public string ProgressName { get; set; }
-        public string StudentName { get; set; }
-        public string LinkSource { get; set; }
         public string Note { get; set; }
-        [System.ComponentModel.Browsable(false)]
-        public virtual Project Project { get; set; }
+        public string LinkSource { get; set; }
 
-        
+        [System.ComponentModel.Browsable(false)]
+        public virtual ProjectManagement ProjectManagement { get; set; }
     }
 }
