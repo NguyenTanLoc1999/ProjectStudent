@@ -39,10 +39,12 @@ namespace DBProjectStudent.View
                             txtPassword.Text = "";
                             return;
                         }
-                        using (var frm = new frmMainMDI(lectureLogged,lecture.L_fullname))
+                        using (var frm = new MainGUI(lectureLogged,lecture.L_fullname,lecture.L_email))
                         {
                             frm.ShowDialog();
-                            this.Hide();
+                            //this.Hide();
+                            txtPassword.Clear();
+                            txtUsername.Clear();
                         }
                     }
                     else
@@ -54,10 +56,12 @@ namespace DBProjectStudent.View
                             txtPassword.Text = "";
                             return;
                         }
-                        using (var frm = new frmMainMDI(lectureLogged, student.S_fullname))
+                        using (var frm = new MainGUI(lectureLogged, student.S_fullname,student.S_email))
                         {
                             frm.ShowDialog();
-                            this.Hide();
+                            //this.Hide();
+                            txtPassword.Clear();
+                            txtUsername.Clear();
                         }
                     }
                     
@@ -81,6 +85,36 @@ namespace DBProjectStudent.View
         {
             if (MessageBox.Show("Do you want stop application?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 Application.Exit();
+        }
+
+        private void txtUsername_Enter(object sender, EventArgs e)
+        {
+            if (txtUsername.Text == "Type Here") { txtUsername.Text = "";txtUsername.ForeColor = Color.LightGray; }
+        }
+
+        private void txtUsername_Leave(object sender, EventArgs e)
+        {
+            if (txtUsername.Text == "") { txtUsername.Text = "Type Here"; txtUsername.ForeColor = Color.DimGray; }
+        }
+
+        private void txtPassword_Leave(object sender, EventArgs e)
+        {
+            if (txtPassword.Text == "") 
+            { 
+                txtPassword.Text = "Type Here"; 
+                txtPassword.ForeColor = Color.DimGray;
+                txtPassword.UseSystemPasswordChar = false;
+            }
+        }
+
+        private void txtPassword_Enter(object sender, EventArgs e)
+        {
+            if (txtPassword.Text == "Type Here")
+            {
+                txtPassword.Text = "";
+                txtPassword.ForeColor = Color.LightGray;
+                txtPassword.UseSystemPasswordChar = true;
+            }
         }
     }
 }

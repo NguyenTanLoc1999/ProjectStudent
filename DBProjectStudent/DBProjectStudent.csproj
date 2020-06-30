@@ -43,9 +43,12 @@
     <Reference Include="Microsoft.ReportViewer.WinForms">
       <HintPath>C:\WindowsFormsApp1\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1400.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.VisualBasic.PowerPacks, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.Services" />
@@ -143,6 +146,12 @@
     <Compile Include="View\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\MainGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\MainGUI.Designer.cs">
+      <DependentUpon>MainGUI.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -151,6 +160,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="View\frmProjectDetail.resx">
       <DependentUpon>frmProjectDetail.cs</DependentUpon>
@@ -172,6 +182,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\MainGUI.resx">
+      <DependentUpon>MainGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Model\DBProjectStudent.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -209,6 +222,21 @@
       <DependentUpon>DBProjectStudent.edmx</DependentUpon>
       <LastGenOutput>DBProjectStudent.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\Project-Management-Fifteen-Header-1.jpg" />
+    <None Include="Resources\download %281%29.png" />
+    <None Include="Resources\user %281%29.png" />
+    <None Include="Resources\user1.png" />
+    <None Include="Resources\126467.png" />
+    <None Include="Resources\69035151-lecturer-icon.jpg" />
+    <None Include="Resources\patient %281%291.png" />
+    <None Include="Resources\download.png" />
+    <None Include="Resources\pngtree-vector-male-student-icon-png-image_326762.jpg" />
+    <None Include="Resources\Normal.png" />
+    <None Include="Resources\maximize3.png" />
+    <None Include="Resources\Minimize.png" />
+    <None Include="Resources\Close.png" />
+    <None Include="Resources\cancel.png" />
+    <None Include="Resources\user.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
