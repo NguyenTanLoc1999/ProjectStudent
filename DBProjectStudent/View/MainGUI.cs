@@ -141,11 +141,19 @@ namespace DBProjectStudent.View
             {
                 //MessageBox.Show("YOU LOG IN AS A STUDENT");
                 frmStudents students = new frmStudents();
+                students.TopLevel = false;
+                students.FormBorderStyle = FormBorderStyle.None;
+                students.Dock = DockStyle.Fill;
+
+                panelShow.Controls.Add(students);
+                panelShow.Tag = students;
+                students.Show();
+                students.BringToFront();
                 students.btnAdd.Enabled = false;
                 students.btnUpdate.Enabled = false;
                 students.btnDelete.Enabled = false;
                 students.dgvStudent.Enabled = false;
-                students.ShowDialog();
+                
 
             }
         }
@@ -164,11 +172,19 @@ namespace DBProjectStudent.View
             {
                 //MessageBox.Show("YOU LOG IN AS A STUDENT");
                 frmLecture lecture = new frmLecture();
+                lecture.TopLevel = false;
+                lecture.FormBorderStyle = FormBorderStyle.None;
+                lecture.Dock = DockStyle.Fill;
+
+                panelShow.Controls.Add(lecture);
+                panelShow.Tag = lecture;
+                lecture.Show();
+                lecture.BringToFront();
                 lecture.btnAdd.Enabled = false;
                 lecture.btnUpdate.Enabled = false;
                 lecture.btnDelete.Enabled = false;
                 lecture.dgvLecture.Enabled = false;
-                lecture.ShowDialog();
+                
 
             }
         }
@@ -185,11 +201,20 @@ namespace DBProjectStudent.View
             {
                 //MessageBox.Show("YOU LOG IN AS A STUDENT");
                 frmProject project = new frmProject();
+               
+                project.TopLevel = false;
+                project.FormBorderStyle = FormBorderStyle.None;
+                project.Dock = DockStyle.Fill;
+
+                panelShow.Controls.Add(project);
+                panelShow.Tag = project;
+                project.Show();
+                project.BringToFront();
                 project.btnUpdate.Enabled = false;
                 project.btnSaveProject.Enabled = false;
                 project.btnDelete.Enabled = false;
                 project.dgvProject.Enabled = false;
-                project.ShowDialog();
+                
 
             }
 
